@@ -2,7 +2,7 @@
 
 **Author: PENGYI** · Version 1.0.1
 
-[免登录试玩](https://pengpengyi92.github.io/ac-town/) · [CF 对公金融小镇](https://pengpengyi92.github.io/ac-town/cf/)
+[免登录试玩](https://pengpengyi92.github.io/ac-town/) · [CF 对公金融小镇](https://pengpengyi92.github.io/ac-town/cf/) · [PWMD 财富管理小镇｜免登录试玩](https://pengpengyi92.github.io/ac-town/pwmd-town/)
 
 AC = Asset Custody，PACD = Pengyi Asset Custody Desk。Q 版 AC 在六个街区探索 55 个公开资料入口。点地面走路，点楼看机构用途和核对限制，再点「进入网站」打开资料原站。也可用建筑名录、键盘或手机操作。
 
