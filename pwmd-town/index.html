@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="PWMD：可步行的私行财富、组合研究和基金尽调教学小镇；不连接真实投资系统。">
+  <title>PWMD 财富管理小镇 · Wealth Management Desk</title>
+  <style>
+:root{color-scheme:dark;--bg:#181729;--panel:#201f34;--deep:#131423;--ink:#f7f1ed;--muted:#c1bed3;--line:#4b4861;--gold:#f3cb8c;--mint:#9de4c6;font:16px/1.46 "Segoe UI","Microsoft YaHei UI","PingFang SC",sans-serif}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--bg);color:var(--ink);min-height:100svh;display:grid;grid-template-rows:auto minmax(0,1fr) auto}button,a,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,a:focus-visible,select:focus-visible,canvas:focus-visible{outline:2px solid var(--gold);outline-offset:3px}button:not(:disabled):hover,a:hover{filter:brightness(1.16)}a{color:#e9d0ac}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.24}p{line-height:1.54}
+.top{min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px clamp(14px,2.3vw,36px);border-bottom:1px solid var(--line);background:#1e1b2f}.identity,.top-actions{display:flex;align-items:center;gap:13px}.logo{width:46px;height:46px;display:grid;place-items:center;border:1px solid #d0a978;background:#342a3d;color:var(--gold);border-radius:10px;font-size:1.12rem;font-weight:830;letter-spacing:-.05em}.kicker{font-size:.78rem;letter-spacing:.135em;font-weight:750;color:#c2b5d3;line-height:1.38}.kicker span{color:#a9839b}.top h1{font-size:1.46rem;margin-top:3px}.notice{border:1px solid #7b604f;border-radius:999px;background:#3c2d3e;color:#f7d8a4;font-size:.85rem;padding:6px 10px;white-space:nowrap}.button,.primary{display:inline-flex;align-items:center;justify-content:center;min-height:36px;border:1px solid #635c78;border-radius:7px;color:#f2ebf4;background:#2d2943;padding:5px 9px;white-space:nowrap;font-size:.88rem}.full{width:37px;padding:0}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) clamp(330px,28vw,445px);min-height:0}.world{position:relative;min-height:570px;isolation:isolate;overflow:hidden;border-right:1px solid var(--line);background:radial-gradient(ellipse at 47% 48%,#3c395a,#24243b 63%,#19192f 92%)}#map{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair;touch-action:manipulation}.world-head{position:absolute;left:clamp(16px,2.4vw,38px);top:24px;pointer-events:none}.world-head h2{font-size:clamp(1.16rem,2.3vw,2.1rem);margin:4px 0}.world-head p{font-size:.89rem;color:#d3c5d7}.map-tools{position:absolute;top:19px;right:17px;display:flex;gap:6px}.map-tools button{font-size:1.16rem;width:36px;padding:0}.markers{position:absolute;inset:0;pointer-events:none}.pin{position:absolute;transform:translate(-50%,-100%);pointer-events:auto;padding:4px 7px;border:1px solid color-mix(in srgb,var(--accent),#6d6177 28%);color:#fff3f2;background:#292339eb;border-radius:7px;white-space:nowrap;font-size:.85rem;display:flex;gap:5px;align-items:center;line-height:1.24;box-shadow:0 3px 9px #1914265c}.pin b{font:800 .70rem ui-monospace,monospace;color:var(--accent)}.pin::after{content:"";position:absolute;top:100%;left:50%;width:1px;height:8px;background:var(--accent)}.pin[aria-current=true]{background:#433347;box-shadow:0 0 0 2px var(--accent)}.actor{position:absolute;transform:translate(-50%,-100%);pointer-events:none;background:#f5d8a9;color:#392e46;border-radius:5px;padding:2px 5px;font:800 .74rem ui-monospace,monospace;box-shadow:0 0 16px #ffd5948c}.walk{position:absolute;bottom:16px;left:clamp(12px,2vw,34px);max-width:90%;padding:7px 10px;background:#262138e8;border:1px solid #6c5c75;color:#ebdce5;font-size:.88rem;border-radius:8px;pointer-events:none}
+.inspector{min-width:0;padding:17px clamp(13px,1.55vw,24px);overflow:auto;background:linear-gradient(140deg,#242139,#201e34);scrollbar-color:#5b5471 #242139}.inspector>h2{font-size:1.4rem;margin:3px 0 11px}.tabs,.desk-select,.answers{display:flex;flex-wrap:wrap;gap:6px}.tabs .button{flex:1;font-weight:750}.button[aria-pressed=true]{background:#48374c;border-color:#d7b482;color:#ffe6bc}.desk-select{margin:11px 0}.desk-select .button{min-height:33px;font-size:.81rem;padding:4px 6px}.card{padding:13px 12px;border:1px solid #645871;border-radius:10px;background:#2e2942;margin-top:9px}.card h3,.source-area h3{font-size:1.10rem;margin:4px 0 6px}.card p{font-size:.94rem;color:#e2d9e2}.card .prompt{margin:8px 0;color:#f7deab;font-weight:680}.card .caution{border-left:2px solid #c78d8d;padding-left:7px;color:#f1d0d1;font-size:.88rem}.primary{display:flex;width:100%;background:var(--gold);border-color:#efd4a9;color:#332638;font-weight:820;margin-top:10px}.source-area{margin-top:10px}.source-area h3{font-size:1rem}.source{display:block;border-top:1px solid #4e455e;padding:7px 0}.source a{font-size:.88rem}.source small,.small{display:block;margin-top:2px;color:#c9bfd3;font-size:.80rem;line-height:1.38}
+.inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:9px 0}.inputs label{font-size:.79rem;color:#e5d5df;white-space:nowrap}.inputs select{width:100%;font-size:.79rem;color:#ffefdb;background:#332b48;border:1px solid #71657d;border-radius:6px;height:32px;padding:3px;min-width:0}.numbers{display:grid;grid-template-columns:1fr 1fr;gap:7px}.numbers div{display:grid;gap:2px;background:#222035;border-radius:7px;border:1px solid #524762;padding:6px 7px}.numbers span{font-size:.82rem;color:#e9d9e2}.numbers strong{font-size:1.13rem;font-variant-numeric:tabular-nums;color:var(--gold)}.card .small{font-size:.81rem;color:#c9bfd3;margin-top:6px}.round .answers{margin-top:7px}.answers .button{white-space:normal;justify-content:start;text-align:left}.round #question{margin:5px 0}.round #feedback{min-height:1.25em}
+.foot{display:flex;align-items:center;gap:clamp(9px,2.3vw,36px);padding:9px clamp(13px,2.3vw,37px);border-top:1px solid var(--line);background:#1e1b2f;color:#e3d8e4;font-size:.90rem;flex-wrap:wrap}.foot b{color:var(--gold);font-variant-numeric:tabular-nums}.foot .by{margin-left:auto;white-space:nowrap}.foot small{font-size:.76rem;color:#c6b6cc}.foot .button{min-height:30px;font-size:.8rem}.foot #missionState[data-state=HOLD]{color:#ffddaa;font-weight:740}
+dialog{max-width:min(580px,calc(100% - 24px));width:100%;background:#29243d;color:var(--ink);border:1px solid #7a6c88;border-radius:12px;padding:18px}dialog::backdrop{background:#10101bbd}.dialog-head{display:flex;align-items:center;justify-content:space-between}.dialog-head h2{font-size:1.22rem}dialog p{margin-top:12px;color:#eadde8}
+.inputs label{display:block;min-width:0;white-space:normal}.inputs select{display:block;margin-top:3px}
+@media(min-width:900px) and (min-height:725px){body{height:100svh}.world{min-height:0}}@media(max-width:899px){.layout{display:block}.world{height:54svh;min-height:420px;border-right:0;border-bottom:1px solid var(--line)}.inspector{overflow:visible;padding:14px 15px}.world-head{top:14px}.map-tools{top:12px;right:11px}.map-tools button{width:33px}.pin{font-size:.78rem}.walk{bottom:9px}}@media(max-width:480px){.top{min-height:65px;padding:8px 9px;gap:6px}.identity,.top-actions{gap:5px}.logo{width:35px;height:35px;font-size:.92rem}.top h1{font-size:1.05rem}.top .kicker{font-size:.52rem;letter-spacing:.065em}.notice{display:none}.top .button{font-size:.73rem;padding:4px 6px;min-height:31px}.top .full{width:31px;padding:0}.world{height:49svh;min-height:355px}.world-head p{font-size:.76rem}.pin{font-size:.71rem;padding:3px 4px}.pin b{display:none}.walk{font-size:.78rem}.foot .by{margin-left:0}.foot{font-size:.82rem}}
+</style>
+  
+  
+  
+  
+</head>
+<body>
+  <header class="top">
+    <div class="identity"><span class="logo" aria-hidden="true">WM</span><div><div class="kicker">PENGYI <span> / </span> WEALTH MANAGEMENT DESK</div><h1>PWMD 财富管理小镇</h1></div></div>
+    <div class="top-actions"><span class="notice">独立教学模拟</span><button class="button" id="help" type="button">玩法与边界</button><button class="button full" id="screen" type="button" aria-label="切换全屏" title="切换全屏"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button></div>
+  </header>
+  <main class="layout">
+    <section class="world" aria-label="PWMD 三维园区">
+      <canvas id="map" tabindex="0" aria-label="财富管理园区 3D 地图。点地面行走、选建筑，或用 WASD 和方向键。"></canvas>
+      <div class="world-head"><div class="kicker">THE WEALTH QUARTER</div><h2>从客户需求，走到证据</h2><p>参照平安银行公开披露 · 非平安官方</p></div>
+      <div class="map-tools" aria-label="地图视角"><button class="button" id="left" type="button" title="向左旋转" aria-label="向左旋转">↶</button><button class="button" id="right" type="button" title="向右旋转" aria-label="向右旋转">↷</button><button class="button" id="recenter" type="button" aria-label="恢复默认角度" title="恢复默认角度">◎</button></div>
+      <div id="markers" class="markers"></div><span id="actor" class="actor" aria-hidden="true">WM</span>
+      <div class="walk" id="walk" aria-live="polite">点击路面让 WM 行走 · 点击建筑查原件</div>
+    </section>
+    <aside class="inspector" aria-label="财富工作台">
+      <div class="kicker">FIELD GUIDE</div><h2>财富工作台</h2>
+      <div class="tabs" role="group" aria-label="工作台视图"><button class="button" type="button" data-view="desks" aria-pressed="true">建筑导览</button><button class="button" type="button" data-view="lab" aria-pressed="false">组合实验</button></div>
+      <section id="desks" aria-label="当前建筑">
+        <div id="deskSelect" class="desk-select" role="group" aria-label="选择建筑"></div>
+        <div class="card desk-card"><div id="kind" class="kicker"></div><h3 id="deskTitle"></h3><p id="deskIntro"></p><p class="prompt" id="deskQuestion"></p><p class="caution" id="deskGate"></p><button type="button" class="primary" id="walkTo">让 WM 走到入口</button></div>
+        <section class="source-area" aria-label="当前建筑证据"><h3>核对原件</h3><div id="sources"></div></section>
+      </section>
+      <section id="lab" aria-label="组合诊断合成演练" hidden>
+        <div class="card"><div class="kicker">SYNTHETIC WORK SAMPLE</div><h3>低波动，还是净值更新慢？</h3><p>权益 −20%、固收 −5%。比较基线和换入 10 点基金的候选：把已发布值、压力假设、现金到账分开。</p>
+        <div class="inputs"><label>决策快照<select id="day"><option value="5">T+5 · 旧净值可得</option><option value="10">T+10 · 新值已发布</option></select></label><label>基金同步压力<select id="stress"><option value="-45">−45%</option><option value="-30" selected>−30%</option><option value="-15">−15%</option></select></label><label>第 30 天需用<select id="need"><option value="8">8 点</option><option value="10">10 点</option><option value="12" selected>12 点</option><option value="15">15 点</option></select></label></div>
+        <div class="numbers" aria-live="polite"><div><span>原组合</span><strong id="baseVal"></strong></div><div><span>候选 · 可见 NAV</span><strong id="knownVal"></strong></div><div><span>候选 · 情景估值</span><strong id="stressVal"></strong></div><div><span>第 30 天现金缺口</span><strong id="cashVal"></strong></div></div><p id="timeline" class="small"></p></div>
+        <div class="card round"><div id="roundTitle" class="kicker"></div><p id="question"></p><div id="answers" class="answers"></div><p id="feedback" class="small" aria-live="polite"></p></div>
+      </section>
+    </aside>
+  </main>
+  <footer class="foot"><span><b id="visited">0 / 7</b> 已到访</span><span><b id="passed">0 / 3</b> 案例判读</span><span id="missionState">探索中</span><button class="button" type="button" id="reset">重开演练</button><span class="by">Author: PENGYI <small> · v1.0.0</small></span></footer>
+  <dialog id="about" aria-labelledby="dialogTitle"><form method="dialog" class="dialog-head"><h2 id="dialogTitle">怎么逛 PWMD</h2><button class="button" value="close">关闭</button></form><p>先点建筑让 WM 走到入口，右侧看它的职责和查证原件。也可按 WASD 或方向键走动。「组合实验」是没有真实资金的教学题；三关全部通过会留下 HOLD，而不是推荐或交易许可。</p><p>本项目参照发行人和监管公开资料制作。地图、角色和流程均非平安银行的实际场所或内部组织；不收客户信息、不开户、不荐基、不申购赎回，不在后台联系任何外站。原件链接只有点击时才打开。</p></dialog>
+  <noscript>需要启用 JavaScript；不需要联网、登录或安装依赖。</noscript>
+<script>
+// PWMD v1.0.0 original diorama by PENGYI. X east, Y up, Z south.
+(function(root, make){const api=make();if(typeof module==='object')module.exports=api;else root.WM_SCENE=api;})(globalThis,function(){
+  'use strict';
+  const VERSION='1.0.0',BOUNDS={x:25,z:16},SPAWN={x:0,z:1.12};
+  const places=[
+    ['hq','01','私行总部','PRIVATE BANK HQ',-17,-8.6,10.3,6.9,5.92,'#f0b65f'],
+    ['portfolio','02','组合诊断台','PORTFOLIO LAB',0,-10,11.6,7.1,5.73,'#77cad6'],
+    ['family','07','家企传承馆','FAMILY OFFICE',17,-8.5,10.4,6.5,4.58,'#cda9f3'],
+    ['public','03','公募基金馆','PUBLIC FUNDS',-18.7,8,7.8,5.6,3.45,'#79b9f6'],
+    ['private','04','私募与另类馆','PRIVATE MARKETS',-6.2,7.3,8.0,5.6,4.13,'#f0a8b5'],
+    ['risk','05','风控合规塔','RISK & COMPLIANCE',6.5,7.0,7.7,5.6,5.06,'#edc579'],
+    ['custody','06','托管现金台','CUSTODY & CASH',19.1,6.4,7.4,5.6,3.80,'#85e0c1']
+  ];
+  const plots=places.map(([id,num,name,en,x,z,w,d,h,accent])=>({id,num,name,en,x,z,w,d,h,accent,door:{x,z:z+d/2+.9}}));
+  const spots=Object.fromEntries(plots.map(p=>[p.id,p]));
+  const glass='#253b59',cream='#c6b69f',roof='#4b4f6a',stone='#67637c',gold='#e2b573';
+  function tint(c,k){return '#'+[1,3,5].map(i=>Math.round(Math.max(0,Math.min(255,parseInt(c.slice(i,i+2),16)*k))).toString(16).padStart(2,'0')).join('');}
+  function f(m,pts,color,id,normal){m.push({pts,color,id,normal});}
+  function prism(m,ring,y,Y,c,id){
+    f(m,ring.map(([x,z])=>[x,Y,z]),tint(c,1.1),id,[0,1,0]);
+    f(m,ring.slice().reverse().map(([x,z])=>[x,y,z]),tint(c,.57),id,[0,-1,0]);
+    ring.forEach(([x,z],i)=>{const [a,b]=ring[(i+1)%ring.length],n=Math.hypot(a-x,b-z),nx=(z-b)/n,nz=(a-x)/n;f(m,[[x,y,z],[a,y,b],[a,Y,b],[x,Y,z]],tint(c,.76+.09*nz+.05*nx),id,[nx,0,nz]);});
+  }
+  function box(m,x,y,z,w,h,d,c,id=null){const u=w/2,v=d/2;prism(m,[[x-u,z-v],[x-u,z+v],[x+u,z+v],[x+u,z-v]],y,y+h,c,id);}
+  function ring(m,x,y,z,rx,h,rz,c,id=null,n=12){prism(m,Array.from({length:n},(_,i)=>{const a=-2*Math.PI*(i+.5)/n;return [x+Math.cos(a)*rx,z+Math.sin(a)*rz];}),y,y+h,c,id);}
+  function facade(m,p){
+    const {id,x,z,d,w,h,accent}=p,front=z+d/2;
+    const b=(X,Y,Z,W,H,D,C)=>box(m,x+X,Y,z+Z,W,H,D,C,id);
+    const cyl=(X,Y,Z,W,H,D,C,n)=>ring(m,x+X,Y,z+Z,W,H,D,C,id,n);
+    b(0,.02,0,w+.65,.17,d+.44,stone);
+    b(0,.10,d/2+.80,w*.75,.08,1.35,'#a39382');
+    b(0,.18,d/2+.48,w*.68,.10,1.16,'#c0ad99');
+    if(id==='hq'){
+      b(0,.2,-.15,w,4.18,d-.29,cream);
+      b(0,4.39,-.14,w+.45,.34,d+.13,accent);
+      b(0,4.73,-.67,w*.55,.45,d*.54,roof);
+      cyl(0,5.19,-.67,1.45,.49,1.43,accent,10);cyl(0,5.69,-.67,.75,.22,.74,'#f3dfb9',10);
+      for(const a of [-3.97,-2.7,2.70,3.97]){cyl(a,.21,d/2+.12,.22,3.82,.22,'#e4d6bd',8);b(a,3.99,d/2+.12,.57,.22,.56,accent);}
+      b(0,.26,d/2+.03,3.22,3.2,.14,glass);
+      for(const a of [-4.40,-1.50,1.50,4.40])b(a,1.33,-d/2+.01,.91,2.03,.08,glass);
+      b(0,3.59,d/2+.11,4.83,.23,.55,accent);
+    }else if(id==='portfolio'){
+      b(0,.2,-.12,w,3.0,d-.26,'#7999a5');b(0,3.20,-.12,w+.23,.25,d+.10,accent);
+      for(let i=0;i<3;i++){const X=-3.57+i*3.53,H=1.03+i*.53;
+        b(X,3.46,-.85,2.43,H,3.18,['#31546b','#3b6781','#476e8a'][i]);
+        b(X,3.46+H,-.85,2.60,.19,3.35,accent);
+        for(let j=0;j<3;j++)b(X-.69+j*.67,3.7,.76,.31,.68,.075,'#9ae5ec');
+      }
+      for(let i=0;i<7;i++) b(-4.63+i*1.53,.49,d/2-.06,1.3,1.91,.14,i%2?glass:'#355770');
+      b(0,2.55,d/2+.28,5.1,.16,1.15,accent);
+    }else if(id==='family'){
+      b(0,.20,-.40,w,2.76,d-.8,'#a894b7');b(0,2.96,-.37,w+.54,.32,d-.16,accent);
+      b(0,3.29,-.38,5.6,.73,3.77,'#675879');b(0,4.02,-.38,5.92,.22,4.05,accent);
+      b(0,4.26,-.38,4.86,.23,3.02,'#b480a8');
+      for(const a of [-4.04,-2.76,2.76,4.04])cyl(a,.26,d/2-.01,.18,2.79,.18,'#ddc5e6',8);
+      b(0,.32,d/2-.75,2.67,2.0,.13,glass);b(0,2.47,d/2+.09,5.23,.17,.78,'#d9b6f6');
+      for(const x2 of [-3.0,3.0]) b(x2,.17,d/2+.52,1.36,.23,.48,'#687c76');
+    }else if(id==='public'){
+      b(0,.20,-.1,w,2.65,d-.19,'#9fabbf');b(0,2.85,-.1,w+.42,.31,d+.23,accent);
+      b(0,3.17,-.65,w*.67,.26,2.09,roof);
+      for(const a of [-2.79,-1.52,1.52,2.79])b(a,.29,d/2+.10,.24,2.53,.27,'#d2e6f3');
+      for(const a of [-2.12,0,2.12])b(a,.41,d/2+.01,1.25,2.02,.08,glass);
+      b(0,2.57,d/2+.35,w*.8,.15,.86,accent);
+    }else if(id==='private'){
+      b(0,.20,-.04,w,2.72,d-.10,'#807594');b(0,2.92,-.02,w+.27,.26,d+.26,accent);
+      b(-1.9,3.19,-.77,3.32,.68,3.16,'#5b4968');b(1.92,3.19,-.77,3.25,.44,2.52,'#5b4968');
+      b(-1.9,3.88,-.77,3.47,.22,3.3,accent);
+      b(0,.35,d/2,2.5,2.26,.13,glass);
+      for(const a of [-3.11,-2.33,-1.55,1.55,2.33,3.11])b(a,.7,d/2+.02,.29,1.66,.08,'#e6a5b7');
+    }else if(id==='risk'){
+      b(0,.2,-.12,w,2.74,d-.24,'#9c927e');b(0,2.95,-.12,w+.36,.23,d+.15,accent);
+      b(0,3.19,-.36,3.47,1.25,3.16,'#4f6173');b(0,4.45,-.36,3.69,.25,3.39,accent);
+      cyl(0,4.71,-.36,.72,.34,.67,'#f0d592',10);
+      b(0,3.68,1.23,2.64,.4,.06,'#ffe0a1');
+      for(const a of [-2.31,0,2.31])b(a,.33,d/2+.008,1.39,2.05,.105,glass);
+      b(0,2.51,d/2+.28,4.7,.18,.88,accent);
+    }else{
+      b(0,.2,-.19,w,2.37,d-.34,'#76978f');b(0,2.58,-.19,w+.32,.22,d+.19,accent);
+      cyl(0,2.81,-.58,1.55,.46,1.42,'#3c787e',12);
+      cyl(0,3.28,-.58,1.22,.32,1.12,'#82c5b1',12);cyl(0,3.6,-.58,.64,.17,.59,accent,12);
+      b(0,.24,d/2-.11,2.31,2.03,.16,glass);
+      for(const a of [-2.45,2.45]) b(a,.68,d/2-.10,1.29,1.43,.12,'#b3e8d6');
+      b(0,2.3,d/2+.23,w*.74,.16,.86,accent);
+    }
+  }
+  function flat(m,x,z,w,d,c,kind='surface'){box(m,x,.013,z,w,.016,d,c,kind);}
+  function terrain(){
+    const m=[];
+    for(const [y,H,W,D,C] of [[-1.34,.62,53,35,'#282338'],[-.72,.65,52,34,'#49445e'],[-.072,.07,51,33,'#555169']])box(m,0,y,0,W,H,D,C,'base');
+    flat(m,0,-.1,50,4.7,'#34374e');flat(m,-11.9,0,3.3,32,'#37394e');flat(m,12.5,0,3.3,32,'#37394e');
+    flat(m,0,14.3,50,2.8,'#30344a');
+    for(const p of plots)flat(m,p.x,p.z,p.w+1.25,p.d+1.35,'#71667b');
+    for(let i=-24;i<=24;i+=2)for(const z of [-1.95,1.92,13.03,15.5])flat(m,i,z,1.26,.05,'#aa8f73','mark');
+    for(const x of [-12.76,-11.05,11.66,13.34])for(let z=-14;z<=14;z+=2)if(Math.abs(z)>2.8)flat(m,x,z,.055,1.42,'#988884','mark');
+    for(const [x,z] of [[-11.9,1.33],[12.5,-1.36]])for(let i=0;i<7;i++)flat(m,x+(i-3)*.42,z,.19,.83,'#cabbad','mark');
+    ring(m,0,.025,.07,1.88,.14,1.30,'#988889');ring(m,0,.167,.07,1.58,.035,1.01,'#4c929e');
+    ring(m,0,.215,.07,.37,.59,.34,'#b7a186');ring(m,0,.807,.07,.54,.10,.51,'#d7b765');
+    for(const [x,z] of [[-23,-13],[-23,-2.9],[-23,3.1],[-23,12.53],[-9,-4.9],[7.75,-4.4],[23,-12.6],[23,-2.6],[24,11.45],[.2,13.0],[-12.9,12.6],[12.9,12.6]]){
+      box(m,x,.04,z,1.21,.23,1.21,'#a8948e');
+      ring(m,x,.27,z,.13,.75,.13,'#806659',null,8);
+      ring(m,x,1.02,z,.72,.51,.68,'#507f73',null,8);ring(m,x,1.52,z,.56,.48,.52,'#62a48b',null,8);ring(m,x,1.99,z,.37,.28,.36,'#92bea4',null,8);
+    }
+    for(const x of [-20,-15,-7.2,1.0,7.4,16,22])for(const z of [-2.9,2.61]){
+      box(m,x,.04,z,.38,.16,.38,'#918d96');box(m,x,.2,z,.101,1.55,.101,'#736d80');ring(m,x,1.75,z,.215,.23,.213,'#ffe4a6',null,8);
+    }
+    return m;
+  }
+  function objects(){const m=[];for(const p of plots)facade(m,p);return m;}
+  function actor(x=0,z=0,phase=0,walking=false,heading=0){
+    const m=[],d=walking?Math.sin(phase*11)*.22:0,y=walking?Math.abs(d)*.52:0;
+    for(const s of [-1,1]){
+      box(m,s*.23,.035,s*d,.34,.25,.47,'#353759','WM');
+      ring(m,s*.48,.32+y,-s*d,.14,.47,.14,'#cdb6c8','WM',8);
+    }
+    ring(m,0,.23+y,0,.49,.66,.35,'#8678ab','WM');
+    box(m,0,.51+y,.35,.50,.19,.085,gold,'WM');
+    ring(m,0,.83+y,0,.54,.48,.46,'#f0c8aa','WM');
+    ring(m,0,1.29+y,-.055,.57,.22,.50,'#332e49','WM');
+    ring(m,0,1.49+y,-.07,.44,.12,.43,'#473752','WM');
+    for(const e of [-.16,.16])box(m,e,1.01+y,.437,.07,.084,.045,'#4d3a48','WM');
+    const c=Math.cos(heading),s=Math.sin(heading);return m.map(g=>({...g,pts:g.pts.map(([a,b,d])=>[x+a*c+d*s,b,z-a*s+d*c]),normal:[g.normal[0]*c+g.normal[2]*s,g.normal[1],-g.normal[0]*s+g.normal[2]*c]}));
+  }
+  return {VERSION,BOUNDS,SPAWN,plots,spots,terrain,objects,actor};
+});
+</script>
+<script>
+// Adapted from the author's CF Motor District 1.0.0 navigation and camera.
+(function(root,make){const api=make();if(typeof module==='object')module.exports=api;else root.WM_NAV=api;})(globalThis,function(){
+  'use strict';
+  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+  function camera(w,h,angle=.31,zoom=1){
+    const sin=Math.sin(angle),cos=Math.cos(angle),tilt=.52,up=.86;
+    const spanX=55*Math.abs(cos)+36*Math.abs(sin), spanY=(55*Math.abs(sin)+36*Math.abs(cos))*tilt+6;
+    const scale=Math.min((w-28)/spanX,(h-60)/spanY)*zoom;
+    const x0=w*.5,y0=h*.525;
+    return {
+      project([x,y,z]){return {x:x0+(x*cos-z*sin)*scale,y:y0+((x*sin+z*cos)*tilt-y*up)*scale};},
+      ground(x,y){const u=(x-x0)/scale,v=(y-y0)/(scale*tilt);return {x:u*cos+v*sin,z:v*cos-u*sin};},
+      depth([x,y,z]){return x*sin+z*cos+y*tilt/up;},
+      visible([nx,ny,nz]){return nx*sin+ny*tilt/up+nz*cos>1e-6;},
+      scale
+    };
+  }
+  function free(p,plots,bounds){
+    return Math.abs(p.x)<=bounds.x && Math.abs(p.z)<=bounds.z && !plots.some(b=>Math.abs(p.x-b.x)<b.w/2+.45 && Math.abs(p.z-b.z)<b.d/2+.45);
+  }
+  function clear(a,b,plots,bounds){
+    const count=Math.max(1,Math.ceil(Math.hypot(b.x-a.x,b.z-a.z)/.21));
+    for(let i=0;i<=count;i++){const t=i/count;if(!free({x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t},plots,bounds))return false;}
+    return true;
+  }
+  function route(from,target,plots,bounds){
+    const to={x:clamp(target.x,-bounds.x,bounds.x),z:clamp(target.z,-bounds.z,bounds.z)};
+    if(!free(to,plots,bounds))return [];
+    if(clear(from,to,plots,bounds))return [to];
+    const step=.5,key=p=>p.x+','+p.z;
+    function nearby(p){
+      const options=[];
+      const x=Math.round(p.x/step)*step,z=Math.round(p.z/step)*step;
+      for(let i=-2;i<=2;i++)for(let j=-2;j<=2;j++){
+        const a={x:x+i*step,z:z+j*step};if(clear(p,a,plots,bounds))options.push(a);
+      }
+      return options.sort((a,b)=>Math.hypot(a.x-p.x,a.z-p.z)-Math.hypot(b.x-p.x,b.z-p.z))[0];
+    }
+    const start=nearby(from),goal=nearby(to);if(!start||!goal)return [];
+    const h=p=>Math.abs(p.x-goal.x)+Math.abs(p.z-goal.z);
+    const open=[{...start,g:0,prev:null}],seen=new Map([[key(start),0]]);
+    while(open.length){
+      let idx=0;for(let i=1;i<open.length;i++)if(open[i].g+h(open[i])<open[idx].g+h(open[idx]))idx=i;
+      const cur=open.splice(idx,1)[0];
+      if(key(cur)===key(goal)){
+        const path=[to];for(let at=cur;at;at=at.prev)path.push({x:at.x,z:at.z});path.reverse();
+        const smooth=[];let a=from;
+        for(let i=0;i<path.length;){let j=path.length-1;while(j>i&&!clear(a,path[j],plots,bounds))j--;a=path[j];smooth.push(a);i=j+1;}
+        return smooth;
+      }
+      if(cur.g!==seen.get(key(cur)))continue;
+      for(const [dx,dz] of [[step,0],[-step,0],[0,step],[0,-step]]){
+        const p={x:cur.x+dx,z:cur.z+dz};const g=cur.g+step;
+        if(!clear(cur,p,plots,bounds)||g>=(seen.get(key(p))??Infinity))continue;
+        seen.set(key(p),g);open.push({...p,g,prev:cur});
+      }
+    }
+    return [];
+  }
+  return {camera,free,clear,route};
+});
+</script>
+<script>
+(function(root,make){const api=make();if(typeof module==='object')module.exports=api;else root.WM_DESK=api;})(globalThis,function(){
+  'use strict';
+  const R=(title,url,note)=>({title,url,note});
+  const annual=R('平安银行 2025 年报 §4.14','https://disc.static.szse.cn/disc/disk03/finalpage/2026-03-21/dfd80de4-dbef-407a-981a-6b62cfef0d8b.PDF','组织图，印刷 81 / PDF 82 页；按报告期末阅读');
+  const quarter=R('平安银行 2026 年三季报','https://static.cninfo.com.cn/finalpage/2026-10-24/1225620609.PDF','§1.5.2 私行财富与脚注，2026-09-30');
+  const half=R('平安银行 2026 年半年报','https://static.cninfo.com.cn/finalpage/2026-08-15/1225475344.PDF','第三章，产品梯度、销售和余额');
+  const fees=R('证监会 · 公募销售费用规则','https://www.csrc.gov.cn/csrc/c101954/c7606091/content.shtml','2026-01-01 施行；仍查份额及有效文件');
+  const disclosure=R('证监会 · 公募信息披露','https://www.csrc.gov.cn/csrc/c106256/c1653985/content.shtml','基金原件、管理人和托管人职责');
+  const placement=R('基金业协会 · 信息公示','https://gs.amac.org.cn/','核对管理人和产品记录；不是评级或背书');
+  const privateLaw=R('行政法规库 · 私募基金条例','https://xzfg.moj.gov.cn/front/law/detail?LawID=1673','非公开募集、合格投资者与适当性');
+  const currentDisclosure=R('证监会 · 私募信息披露','https://www.csrc.gov.cn/csrc/c101953/c7616837/content.shtml','第 233 号令，2026-09-01 施行');
+  const draft=R('证监会 · 私募募集征求意见','https://www.csrc.gov.cn/csrc/c100028/c7656676/content.shtml','2026-09-04，征求意见不是生效规则');
+  const channel=R('金融监管总局 · 银行代销管理办法','https://www.shanghai.gov.cn/rzfwgj/20251020/df3cdfa45fa94fdd80d6eda78da1f2e8.html','政府转载原件，核第 24–30 条；一般规则非某行内部签批表');
+  const qualification=R('证监会 · 私募基金暂行办法','https://www.csrc.gov.cn/csrc/c106256/c1653981/content.shtml','第 12、13 条，一般口径及例外；核适用产品');
+  const appointment=R('富国生物科技 ETF 更新招募说明书','https://disc.static.szse.cn/disc/disk03/finalpage/2026-09-14/1fa51ef5-7991-4584-bb9a-e4099e2353b1.PDF','核具体基金托管委任；不是平安代销或担保的证明');
+  const familyPage=R('平安银行 · 私人银行简介','https://bank.pingan.com/privatebank/about.shtml','公开服务场景，不能当作个别客户合同');
+  const hk=R('香港金管局 · 理财通南向','https://www.hkma.gov.hk/eng/key-functions/international-financial-centre/wealth-management-connect/southbound-scheme','只限合资格投资者、合资格产品及指定渠道');
+  const data=R('基金业协会 · 公募月度统计','https://www.amac.org.cn/sjtj/tjbg/gmjj/','看市场口径，不当成银行私行 AUM');
+  const peer=R('J.P. Morgan 亚洲私行 · 服务','https://privatebank.jpmorgan.com/apac/en/services','能力对标，不等同于境内准入与地区合同');
+  const desks={
+    hq:{kind:'组织与客户服务',intro:'2025 年末组织图在总行零售金融条线列「私行财富部」。三季报的 1+1+N 指顶级客户服务，不是产品上架签字图。',ask:'谁接客户，谁给组合建议，谁承担独立复核？',gate:'年报能确认报告期正式名称；不能确认深圳分行同名、现任人事或私募产品二级组。',refs:[annual,quarter,half]},
+    portfolio:{kind:'顾问与组合研究',intro:'先问资金用途、期限、币种和已有敞口，再对照资产组合。相同风险可能藏在不同产品名称下面。',ask:'市场下跌时，基金真的分散风险，还是估值迟到造成假象？',gate:'历史决策只能用当时已发布的数据；情景冲击不能冒充已发布净值。',refs:[half,fees,peer]},
+    public:{kind:'公募产品研究',intro:'看说明书、同份额费后表现、基准和可赎回安排。指数、主动、固收与 FOF 要按组合用途挑对照。',ask:'这是可比较的费用口径吗？申购、持有与退出各要付什么？',gate:'在银行渠道看到，不等于银行发行、担保、保本或每日可赎回。',refs:[fees,disclosure,data]},
+    private:{kind:'私募证券 / PE / 私募信贷',intro:'先确认主体、合同、合格投资者、期限和退出；股权要看资本催缴和真实分配，证券还要问杠杆和估值。',ask:'能拿回现金的日期是什么？TVPI 的账面价值中有多少已经分配？',gate:'非公开募集。备案、历史回报、私行客户身份都不是购买授权或适当性通过。',refs:[privateLaw,qualification,placement,draft]},
+    risk:{kind:'独立准入与适当性',intro:'选品提案不等于同意上架；渠道、发行、客户适当性和独立审批是不同的闸门。',ask:'产品入库、推荐给某人、实际执行分别是谁批准？',gate:'商业银行代销特定资管情形要跨部门评估及高管批准；现场无权限执行。',refs:[channel,currentDisclosure,qualification]},
+    custody:{kind:'托管 / 估值 / 现金交收',intro:'用具体基金招募说明书核管理人与托管人。申赎申请、确认、交收和到账分别记时点。',ask:'账面显示有 12 点资产，今天真的有 12 点可以付出去吗？',gate:'托管资格不等于具体产品委任；受任托管不等于销售、管理、担保或资金已到。',refs:[appointment,disclosure,half]},
+    family:{kind:'企业主与家族服务',intro:'把公司周转、家庭可用现金和长期传承资本分账。先看签约人、资金权属和允许用途，再找相应专家。',ask:'公司运营现金、家族可用现金、信托或者 LP 资产各由谁依法控制？',gate:'跨境理财通不是所有香港私募的通道；不提供法律、税务或真实传承方案。',refs:[familyPage,quarter,hk]}
+  };
+  const rounds=[
+    {title:'第一关 · 时点',question:'在 T+5 做旧决策，T 当日净值 T+10 才发布。哪份能用？',options:[['old','只用已发布旧值，标滞后'],['future','按最新公布值回填旧日']],correct:'old',reason:'在 T+5，T+10 发布的值还不知道。旧净值可说明看到了什么，不等于同步估值。'},
+    {title:'第二关 · 现金',question:'第 30 天要付 12 点；现金 10，基金最早第 90 天到账。无另行卖出计划，还缺多少？',options:[['zero','缺 0 点，基金市值可付'],['gap','缺 2 点，另核可执行资金']],correct:'gap',reason:'10 点现金不能覆盖 12 点需付。第 90 天的基金资金不能填第 30 天的缺口。'},
+    {title:'第三关 · 风控',question:'基金合同、实际费用和适当性还没核完。你应提交什么？',options:[['hold','HOLD，列证据缺口与复核人'],['go','直接推荐，净值好就够了']],correct:'hold',reason:'一个高净值标签或一张低波动净值曲线不能代替独立准入、适当性或资金处理。'}
+  ];
+  const versions=[{observed:-10,available:-8,nav:100},{observed:0,available:10,nav:82}];
+  function knownAt(day,rows=versions){return rows.filter(x=>x.observed<=day&&x.available<=day).sort((a,b)=>b.observed-a.observed||b.available-a.available)[0]??null;}
+  function diagnose(day=5,stress=-30,need=12){
+    if(![5,10].includes(day)||![-45,-30,-15].includes(stress)||![8,10,12,15].includes(need))throw RangeError('use a fixed scenario input');
+    const base=60*.8+30*.95+10, rest=50*.8+30*.95+10, seen=knownAt(day);
+    return {base,known:rest+seen.nav/10,scenario:rest+10*(1+stress/100),stress,seen,need,cash:10,fundSettles:90,gap:Math.max(0,need-10)};
+  }
+  function fresh(){return {day:5,stress:-30,need:12,round:0,outcome:'OPEN'};}
+  function answer(state,choice){
+    const r=rounds[state.round];if(!r)return {state,correct:false,feedback:'演练已完成，可重开。'};
+    const correct=r.correct===choice;
+    if(!correct)return {state,correct,feedback:'本关未过。'+r.reason};
+    const round=state.round+1;return {state:{...state,round,outcome:round===rounds.length?'HOLD':'OPEN'},correct,feedback:r.reason};
+  }
+  return {desks,rounds,versions,knownAt,diagnose,fresh,answer};
+});
+</script>
+<script>
+(() => {
+  'use strict';
+  const S=globalThis.WM_SCENE,N=globalThis.WM_NAV,D=globalThis.WM_DESK;
+  const $=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d');
+  const media=matchMedia('(prefers-reduced-motion: reduce)'), visited=new Set(), marks=new Map(), buttons=new Map();
+  let route=[],actor={...S.SPAWN},arrival=null,goal=null,animation=0,last=0,theta=.31,phase=0,heading=0;
+  let selected='hq',view='desks',state=D.fresh(),cam,w=0,h=0,dpr=1,cache,objects=[],hits=[];
+  const meshes=S.objects(), land=S.terrain();
+  function el(tag,text,cls){const a=document.createElement(tag);if(text)a.textContent=text;if(cls)a.className=cls;return a;}
+  for(const p of [...S.plots].sort((a,b)=>a.num.localeCompare(b.num))){
+    const b=el('button',null,'pin');b.type='button';b.dataset.plot=p.id;b.style.setProperty('--accent',p.accent);b.append(el('b',p.num),el('span',p.name));b.addEventListener('click',()=>choose(p.id));$('markers').append(b);marks.set(p.id,b);
+    const m=el('button',p.name,'button');m.type='button';m.dataset.desk=p.id;m.addEventListener('click',()=>choose(p.id));$('deskSelect').append(m);buttons.set(p.id,m);
+  }
+  function shape(points,fill,stroke,width=.6){
+    ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y);ctx.closePath();
+    if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}
+  }
+  function line(points,color,width=1,dash=[]){
+    ctx.save();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.setLineDash(dash);ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);
+    for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y);ctx.stroke();ctx.restore();
+  }
+  function disc({x,y},rx,ry,color){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,2*Math.PI);ctx.fillStyle=color;ctx.fill();}
+  function project(f){return {id:f.id,color:f.color,poly:f.pts.map(cam.project),depth:f.pts.reduce((z,p)=>z+cam.depth(p),0)/f.pts.length};}
+  function paintFace(f){shape(f.poly,f.color,'#221a304f',.54);}
+  function rebuild(){
+    if(w<35||h<60)return;
+    cam=N.camera(w,h,theta);ctx.clearRect(0,0,w,h);
+    const fade=ctx.createRadialGradient(w*.49,h*.5,20,w*.49,h*.5,Math.max(w,h)*.67);
+    fade.addColorStop(0,'#a38abc36');fade.addColorStop(1,'#59477a04');
+    for(let x=-63;x<=63;x+=4){line([[-63,-1.45,x],[63,-1.45,x]].map(cam.project),fade,.7);line([[x,-1.45,-63],[x,-1.45,63]].map(cam.project),fade,.7);}
+    const shadow=ctx.createRadialGradient(w*.47,h*.62,20,w*.47,h*.62,w*.50);shadow.addColorStop(0,'#100b21b5');shadow.addColorStop(1,'#140e1e00');ctx.fillStyle=shadow;ctx.fillRect(0,h*.38,w,h*.52);
+    const visibleGround=land.filter(f=>f.id&&cam.visible(f.normal)).map(project).sort((a,b)=>a.depth-b.depth);
+    for(const layer of ['base','surface','mark'])for(const f of visibleGround)if(f.id===layer)paintFace(f);
+    for(const p of S.plots){const X=p.w/2,Z=p.d/2;shape([[p.x-X-.35,.04,p.z-Z],[p.x-X-.35,.04,p.z+Z+1.0],[p.x+X+.85,.04,p.z+Z+1.0],[p.x+X+.74,.04,p.z-Z]].map(cam.project),'#20162c60');}
+    cache??=document.createElement('canvas');cache.width=canvas.width;cache.height=canvas.height;cache.getContext('2d').drawImage(canvas,0,0);
+    objects=meshes.concat(land.filter(f=>!f.id)).filter(f=>cam.visible(f.normal)).map(project).sort((a,b)=>a.depth-b.depth);
+    hits=objects.filter(f=>S.spots[f.id]).reverse();
+    for(const p of S.plots){const a=cam.project([p.x,p.h+.49,p.z]),b=marks.get(p.id);b.style.left=`${a.x}px`;b.style.top=`${a.y}px`;}
+    draw();
+  }
+  function draw(){
+    if(!cache||!cam)return;
+    ctx.clearRect(0,0,w,h);ctx.drawImage(cache,0,0,w,h);
+    const p=S.spots[selected].door;disc(cam.project([p.x,.05,p.z]),6,3,'#f9d397a8');
+    if(route.length&&goal){line([actor,...route].map(p=>cam.project([p.x,.07,p.z])),'#f9d6a28e',1.5,[5,5]);disc(cam.project([goal.x,.07,goal.z]),9,4,'#ffdc9f9f');}
+    disc(cam.project([actor.x,.061,actor.z]),cam.scale*.60,cam.scale*.28,'#211930a6');
+    const wm=S.actor(actor.x,actor.z,phase,route.length>0,heading).filter(f=>cam.visible(f.normal)).map(project);
+    for(const f of objects.concat(wm).sort((a,b)=>a.depth-b.depth))paintFace(f);
+    const a=cam.project([actor.x,1.85,actor.z]);$('actor').style.left=`${a.x}px`;$('actor').style.top=`${a.y}px`;
+  }
+  function resize(){const r=canvas.getBoundingClientRect();w=r.width;h=r.height;dpr=Math.min(2,devicePixelRatio||1);canvas.width=Math.max(1,Math.round(w*dpr));canvas.height=Math.max(1,Math.round(h*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);rebuild();}
+  const coord=()=>{canvas.dataset.x=actor.x.toFixed(3);canvas.dataset.z=actor.z.toFixed(3);canvas.dataset.motion=route.length?'walking':'idle';};
+  function run(now){
+    animation=0;const dt=Math.min(.05,last?(now-last)/1000:.016);last=now;let d=15.8*dt;
+    while(route.length){
+      const p=route[0],dx=p.x-actor.x,dz=p.z-actor.z,L=Math.hypot(dx,dz);if(L>1e-6)heading=Math.atan2(dx,dz);
+      if(d>=L){actor={...p};d-=L;route.shift();}else{actor.x+=dx*d/L;actor.z+=dz*d/L;break;}
+    }
+    phase+=dt;coord();draw();
+    if(route.length)animation=requestAnimationFrame(run);else{last=0;goal=null;const a=arrival;arrival=null;a?.();draw();}
+  }
+  function walk(place,label,done){
+    const way=N.route(actor,place,S.plots,S.BOUNDS);
+    if(!way.length){$('walk').textContent='此处不可通行。试试路面或建筑入口。';return false;}
+    if(media.matches||Math.hypot(actor.x-place.x,actor.z-place.z)<.06){
+      if(animation)cancelAnimationFrame(animation);animation=0;route=[];arrival=null;goal=null;actor={...way.at(-1)};coord();done?.();draw();return true;
+    }
+    route=way;goal={...way.at(-1)};arrival=done;$('walk').textContent=label?'WM 正走向 '+label:'WM 正在街上走动';coord();if(!animation){last=0;animation=requestAnimationFrame(run);}return true;
+  }
+  function go(id){const a=S.spots[id];walk(a.door,a.name,()=>{visited.add(id);$('walk').textContent='WM 已到达 '+a.name;updateFooter();});}
+  function choose(id){selected=id;setView('desks');renderDesk();go(id);}
+  function within(p,poly){let v=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+    const a=poly[i],b=poly[j];if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)v=!v;
+  }return v;}
+  canvas.addEventListener('click',e=>{
+    if(!cam)return;
+    const box=canvas.getBoundingClientRect(),p={x:e.clientX-box.left,y:e.clientY-box.top};
+    const o=hits.find(f=>within(p,f.poly));if(o){choose(o.id);return;}
+    const target=cam.ground(p.x,p.y);if(Math.abs(target.x)>S.BOUNDS.x+.8||Math.abs(target.z)>S.BOUNDS.z+.8)return;
+    walk(target,null,()=>{$('walk').textContent='WM 已到达 · 继续探索其他建筑';});
+  });
+  addEventListener('keydown',e=>{
+    if($('about').open||e.metaKey||e.ctrlKey||e.altKey||e.target!==canvas)return;
+    const dirs={w:[0,-1],a:[-1,0],s:[0,1],d:[1,0],arrowup:[0,-1],arrowleft:[-1,0],arrowdown:[0,1],arrowright:[1,0]}, q=dirs[e.key.toLowerCase()];
+    if(!q)return;e.preventDefault();const [x,z]=q;
+    walk({x:actor.x+(x*Math.cos(theta)+z*Math.sin(theta))*3.2,z:actor.z+(-x*Math.sin(theta)+z*Math.cos(theta))*3.2},null,()=>{$('walk').textContent='WM 已到达 · 用方向键或点击继续';});
+  });
+  function renderDesk(){
+    const c=D.desks[selected],p=S.spots[selected];$('kind').textContent=c.kind;$('deskTitle').textContent=p.name;$('deskIntro').textContent=c.intro;
+    $('deskQuestion').textContent='这关要问：'+c.ask;$('deskGate').textContent=c.gate;
+    const list=$('sources');list.replaceChildren();
+    for(const item of c.refs){const url=new URL(item.url);if(url.protocol!=='https:'||url.username||url.password)continue;const entry=el('div',null,'source'),a=el('a',item.title);a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';entry.append(a,el('small',item.note));list.append(entry);}
+    for(const [id,m] of marks)m.setAttribute('aria-current',String(id===selected));for(const [id,b] of buttons)b.setAttribute('aria-pressed',String(id===selected));
+    canvas.dataset.selected=selected;draw();
+  }
+  function updateFooter(){
+    $('visited').textContent=`${visited.size} / ${S.plots.length}`;$('passed').textContent=`${state.round} / ${D.rounds.length}`;
+    const m=$('missionState');m.dataset.state=state.outcome;m.textContent=state.outcome==='HOLD'?(visited.size===S.plots.length?'已结案 · HOLD 待核':'案例已结案 · HOLD 待核'):'探索中';
+    canvas.dataset.visited=String(visited.size);canvas.dataset.outcome=state.outcome;
+  }
+  function renderLab(){
+    const m=D.diagnose(state.day,state.stress,state.need);$('baseVal').textContent=m.base.toFixed(1);$('knownVal').textContent=m.known.toFixed(1);$('stressVal').textContent=m.scenario.toFixed(1);$('cashVal').textContent=m.gap+' 点';
+    const show=n=>n===0?'T':n>0?'T+'+n:'T'+n;
+    $('timeline').textContent=`可见 NAV：观测 ${show(m.seen.observed)}，发布 ${show(m.seen.available)}。可用现金 ${m.cash} 点；合成基金最早第 ${m.fundSettles} 天到账。假设不计费用和 FX。`;
+    const r=D.rounds[state.round],answers=$('answers');answers.replaceChildren();$('roundTitle').textContent=r?r.title+' · 固定题（独立于上方情景）':'判读结束 · HOLD';
+    $('question').textContent=r?.question??'交接清单：查基金实际费用、合同退出条件、托管和客户资格。合成演练无投资授权。';
+    if(r)for(const [key,label] of r.options){const b=el('button',label,'button');b.type='button';b.dataset.answer=key;b.addEventListener('click',()=>{
+      const a=D.answer(state,key);state=a.state;renderLab();$('feedback').textContent=a.feedback;updateFooter();$('question').setAttribute('tabindex','-1');$('question').focus({preventScroll:true});
+    });answers.append(b);}
+  }
+  function setView(next){view=next;$('desks').hidden=next!=='desks';$('lab').hidden=next!=='lab';for(const b of document.querySelectorAll('[data-view]'))b.setAttribute('aria-pressed',String(b.dataset.view===view));if(view==='lab')renderLab();}
+  for(const id of ['day','stress','need'])$(id).addEventListener('change',e=>{state={...state,[id]:Number(e.target.value)};renderLab();});
+  for(const b of document.querySelectorAll('[data-view]'))b.addEventListener('click',()=>setView(b.dataset.view));
+  $('walkTo').addEventListener('click',()=>go(selected));
+  $('left').addEventListener('click',()=>{theta-=.20;rebuild();});$('right').addEventListener('click',()=>{theta+=.20;rebuild();});$('recenter').addEventListener('click',()=>{theta=.31;rebuild();});
+  $('help').addEventListener('click',()=>$('about').showModal());
+  $('screen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();else $('walk').textContent='此浏览器不支持页面内全屏。';}catch{$('walk').textContent='浏览器未允许全屏。';}});
+  $('reset').addEventListener('click',()=>{
+    if(animation)cancelAnimationFrame(animation);animation=0;route=[];arrival=null;goal=null;last=0;phase=0;heading=0;actor={...S.SPAWN};state=D.fresh();visited.clear();selected='hq';
+    for(const id of ['day','stress','need'])$(id).value=String(state[id]);$('feedback').textContent='';$('walk').textContent='演练已重开 · 点击路面或选择建筑';
+    setView('desks');renderDesk();updateFooter();coord();draw();
+  });
+  new ResizeObserver(resize).observe(canvas);resize();renderDesk();updateFooter();coord();canvas.dataset.ready='true';
+})();
+</script>
+</body>
+</html>
