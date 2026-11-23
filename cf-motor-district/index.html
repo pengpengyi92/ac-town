@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="驾驶不了车，但你可以跟着 CF 穿过一座 3D 汽车金融园区，走通经销商银承和供应商应收融资。">
+<title>CF 汽车金融城 · Motor District</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1422;--panel:#101e30;--line:#293c50;--ink:#f1f5f7;--muted:#a4b6c7;--mint:#84edc7;--paper:#cab2ff;--cargo:#72cfff;font-family:Inter,"Segoe UI","Microsoft YaHei UI","PingFang SC",sans-serif;font-size:16px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);min-height:100svh;display:grid;grid-template-rows:auto minmax(0,1fr) auto}button,a{font:inherit}button{cursor:pointer;border:1px solid transparent;color:inherit;background:none}button:disabled{cursor:default;opacity:.45}button:focus-visible,a:focus-visible,#map:focus-visible{outline:2px solid #b5f8dc;outline-offset:3px}button:not(:disabled):hover{filter:brightness(1.15)}
+.top{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px clamp(14px,2.4vw,38px);border-bottom:1px solid var(--line);background:#0e1827}.signature{display:flex;align-items:center;gap:13px}.mark{width:46px;height:46px;border:1px solid #6cbea7;border-radius:12px;display:grid;place-items:center;color:var(--mint);font-size:1.25rem;font-weight:850;background:#162d36;letter-spacing:-.04em}.eyebrow{color:#adc2d1;font-size:.78rem;font-weight:750;letter-spacing:.15em;line-height:1.4}.top h1,.control h2,.world h2,.modal-head h2{margin:2px 0 0;font-size:1.42rem;line-height:1.2;letter-spacing:.02em}.top-right{display:flex;gap:9px;align-items:center}.badge{font-size:.85rem;color:#a9efd3;padding:7px 10px;border-radius:999px;background:#17333a;white-space:nowrap;border:1px solid #2b4c50}.badge b{width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block;margin-right:4px;vertical-align:2px}.quiet,.map-tools button{min-height:37px;padding:5px 10px;border-color:#354b61;border-radius:8px;color:#d5e2eb;background:#14263a;font-size:.89rem;white-space:nowrap}.fs{width:39px;padding:5px;display:grid;place-items:center}.layout{display:grid;grid-template-columns:minmax(0,1fr) clamp(305px,26vw,398px);min-height:0}.world{position:relative;min-height:570px;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 47% 48%,#243650,#122136 61%,#0d192a 90%);border-right:1px solid var(--line)}
+#map{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:manipulation;cursor:crosshair}.map-head{position:absolute;top:23px;left:clamp(18px,2.4vw,40px);pointer-events:none}.map-head .eyebrow{color:#93b8c7;letter-spacing:.17em}.map-head h2{font-size:clamp(1.16rem,2.45vw,2.07rem);letter-spacing:.07em;margin-top:4px}.map-head p{margin:6px 0;color:#a7bdcd;font-size:.86rem}.map-tools{position:absolute;right:17px;top:21px;display:flex;gap:6px}.map-tools button{font-size:1.12rem;padding:0;width:38px;color:#cfe1e9;background:#17283bbf}.markers{position:absolute;inset:0;pointer-events:none}.pin{--accent:var(--mint);position:absolute;transform:translate(-50%,-100%);pointer-events:auto;border:1px solid color-mix(in srgb,var(--accent) 60%,#26384a);background:#142537ed;color:#f0f6f7;border-radius:7px;padding:4px 7px 5px;box-shadow:0 3px 8px #050a1855;white-space:nowrap;font-size:.84rem;display:flex;gap:6px;align-items:center;line-height:1.28}.pin b{font-size:.70rem;color:var(--accent);font-family:ui-monospace,Consolas,monospace}.pin[aria-current=true]{background:#203d4e;box-shadow:0 0 0 2px var(--accent),0 0 23px #6bedc944}.pin::after{content:"";position:absolute;width:1px;height:8px;background:var(--accent);top:100%;left:50%}.actor{position:absolute;pointer-events:none;transform:translate(-50%,-100%);padding:2px 6px;border-radius:5px;background:#9ff1d2;color:#162a33;border:1px solid #defaf1;font:800 .76rem ui-monospace,Consolas,monospace;box-shadow:0 0 15px #73f0c28c}.retail{position:absolute;transform:translate(-50%,8px);pointer-events:none;color:#9db6c8;white-space:nowrap;font-size:.77rem}
+.map-foot{position:absolute;bottom:16px;left:clamp(16px,2.4vw,39px);right:17px;display:flex;justify-content:space-between;gap:10px;align-items:center;pointer-events:none}.map-foot>div{background:#0f1d2cde;border:1px solid #2e465a;border-radius:8px;padding:8px 11px;color:#c4d5de;font-size:.85rem}.legend{display:flex;gap:12px;flex-wrap:wrap}.legend span{display:flex;align-items:center;gap:5px;white-space:nowrap}.legend i{width:9px;height:3px;border-radius:2px;display:inline-block;background:var(--c);box-shadow:0 0 8px var(--c)}.cash{--c:var(--mint)}.paper{--c:var(--paper)}.cargo{--c:var(--cargo)}
+.control{background:linear-gradient(#112034,#101d2e);padding:clamp(16px,2vw,25px);display:flex;flex-direction:column;gap:13px;min-width:0}.control-head h2{margin-top:4px}.modes,.partners{display:flex;gap:6px;flex-wrap:wrap}.modes button,.partners button{border-color:#354b61;background:#17273b;border-radius:7px;padding:5px 8px;min-height:35px;font-size:.89rem;color:#d2e2eb}.modes button[aria-pressed=true],.partners button[aria-pressed=true]{border-color:#75d8b7;background:#22443f;color:#c3ffe8}.partners:empty{display:none}.partners button{font-size:.81rem;min-height:31px;padding:4px 7px}.mission{padding:15px 14px 13px;border-radius:12px;border:1px solid #3a5165;background:#17293d;box-shadow:inset 0 1px #47637826}.mission .eyebrow,.control-bottom .eyebrow{color:#a8c9d3}.mission h3,.control-bottom h3{font-size:1.14rem;margin:5px 0 6px;line-height:1.3}.mission p{font-size:1rem;line-height:1.55;color:#d4e0e8;margin:0;min-height:4.7em}.progress{display:flex;gap:5px;min-height:5px;margin:13px 0}.progress b{flex:1;height:4px;border-radius:50px;background:#3e5267}.progress b.past{background:#85dfbe}.progress b.current{background:#d1f6e9;box-shadow:0 0 8px #7eefcc99}.primary{width:100%;min-height:43px;background:#90edc9;color:#102526;border:1px solid #b8f1df;font-weight:800;border-radius:8px;padding:7px 8px;line-height:1.3;font-size:1rem}.event-status{font-size:.84rem;color:#c0d5dc;margin-top:7px;min-height:1.25em}.control-bottom{border-top:1px solid var(--line);padding-top:12px}.recent{color:#bbcfdd;font-size:.91rem;line-height:1.45;min-height:3em}.recent .read{display:block;margin:4px 0;color:#eaf6f5}.recent i{font-style:normal;color:var(--c)}.action-row{display:flex;gap:7px;margin-top:10px}.action-row .quiet{flex:1;padding:6px}.action-row .reset{flex:.68}
+.totals{display:grid;grid-template-columns:repeat(6,minmax(0,1fr)) auto;border-top:1px solid var(--line);background:#0d1827;padding:11px clamp(12px,2.4vw,38px);gap:clamp(8px,1.7vw,27px);align-items:center}.metric{display:grid;gap:3px;border-left:1px solid #33485a;padding-left:10px}.metric span,.by span{font-size:.80rem;color:#a6bac9;white-space:nowrap}.metric strong{font-size:clamp(.94rem,1.6vw,1.28rem);font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:720;color:#c9f3e5}.by{color:#cfdfeb;font-size:.78rem;line-height:1.45}.by span{font-size:.72rem}
+dialog{color:var(--ink);background:#14253a;border:1px solid #4a687d;border-radius:15px;padding:17px 21px 22px;max-width:min(680px,calc(100vw - 26px));width:100%;max-height:85svh;box-shadow:0 15px 90px #020711b5}dialog::backdrop{background:#070e19c9}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #354c62;margin:0;padding-bottom:12px}.modal-head h2{font-size:1.28rem}#modalBody p,#modalBody li{font-size:1rem;line-height:1.65;color:#d3dee8}#modalBody a{color:#a6f1d5}#modalBody li{margin:7px 0}#modalBody article{border-bottom:1px solid #33495d;padding:8px 0}#modalBody article p{margin:3px 0}#modalBody ol{padding-left:1.6rem}
+@media(min-width:880px) and (min-height:780px){body{height:100svh}.control{gap:14px}.control-bottom{margin-top:auto}.world{min-height:0}}
+@media(max-width:879px){.layout{display:block}.world{min-height:460px;height:56svh;border-right:0;border-bottom:1px solid var(--line)}.control{padding:18px}.control-bottom{padding-top:11px}.mission p{min-height:0}.totals{grid-template-columns:repeat(3,minmax(0,1fr));padding:12px}.by{grid-column:1/-1}.map-head{top:15px}.map-tools{right:11px;top:11px}.map-tools button{width:34px}.map-foot{left:10px;right:10px;bottom:9px}.map-foot>div{font-size:.77rem;padding:6px}.legend{gap:6px}.pin{font-size:.76rem;padding:3px 5px;gap:3px}.pin b{font-size:.64rem}}
+@media(max-width:460px){.top{padding:8px 10px;min-height:66px;gap:6px}.mark{width:35px;height:36px;font-size:1rem}.signature{gap:8px}.top h1{font-size:1.13rem}.top .eyebrow{font-size:.56rem;letter-spacing:.09em}.top-right{gap:4px}.badge{font-size:.71rem;padding:5px}.badge b{display:none}.quiet{padding:4px 7px;font-size:.79rem}.fs{width:34px}.world{min-height:365px;height:48svh}.map-head h2{font-size:1.15rem}.map-head p{font-size:.77rem}.map-foot{display:grid;grid-template-columns:1fr;justify-items:start;gap:4px}.legend{order:-1}.retail{font-size:.64rem}.pin{font-size:.72rem}.pin b{display:none}}
+</style>
+
+
+
+
+</head>
+<body>
+<header class="top">
+  <div class="signature"><span class="mark" aria-hidden="true">CF</span><div><div class="eyebrow">PENGYI &nbsp; / &nbsp; MOTOR DISTRICT</div><h1>汽车金融城</h1></div></div>
+  <div class="top-right"><span class="badge"><b></b> 教学模拟</span><button id="sources" class="quiet" type="button">资料与边界</button><button id="fullscreen" class="quiet fs" type="button" aria-label="切换全屏" title="切换全屏"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
+</header>
+<main class="layout">
+  <section id="world" class="world" aria-label="汽车金融园区三维地图">
+    <canvas id="map" tabindex="0" aria-label="三维地图。点击地面行走，或用方向键和 WASD 移动。"></canvas>
+    <div class="map-head"><div class="eyebrow">D I S T R I C T &nbsp; / &nbsp; 01</div><h2>车企供应链园区</h2><p>以比亚迪公开产业生态为参照</p></div>
+    <div class="map-tools" aria-label="地图视角"><button id="angleLeft" type="button" aria-label="旋转视角向左" title="旋转视角向左">↶</button><button id="angleRight" type="button" aria-label="旋转视角向右" title="旋转视角向右">↷</button><button id="viewReset" type="button" aria-label="恢复初始视角" title="恢复初始视角">◎</button></div>
+    <div id="markers" class="markers"></div>
+    <div id="actorBadge" class="actor" aria-hidden="true">CF</div>
+    <div id="retailMark" class="retail" aria-hidden="true">终端客户</div>
+    <div class="map-foot"><div id="walkStatus" aria-live="polite">点路面行走 · 点建筑选择任务</div><div class="legend" aria-label="流向图例"><span><i class="cargo"></i> 货物流</span><span><i class="paper"></i> 单据／票据</span><span><i class="cash"></i> 资金流</span></div></div>
+  </section>
+  <aside class="control" aria-label="模拟操作台">
+    <div class="control-head"><div class="eyebrow">CF WORKSTATION</div><h2>金融操作台</h2></div>
+    <div class="modes" role="group" aria-label="任务路线">
+      <button data-mode="dealer" type="button">经销商</button><button data-mode="supplier" type="button">供应商</button><button data-mode="credit" type="button">主机厂</button><button data-mode="cash" type="button">结算</button>
+    </div>
+    <div id="partners" class="partners" role="group" aria-label="选择企业"></div>
+    <div id="mission" class="mission">
+      <div id="stepLabel" class="eyebrow"></div>
+      <h3 id="stepTitle"></h3><p id="stepDetail"></p>
+      <div id="progress" class="progress" aria-label="任务进度"></div>
+      <button id="execute" type="button" class="primary"></button>
+      <div id="eventStatus" class="event-status" role="status"></div>
+    </div>
+    <div class="control-bottom">
+      <div class="eyebrow">LATEST ACTIVITY</div><h3>最近一笔</h3>
+      <div id="recent" class="recent">还没有模拟交易。完成首个任务，看钱、车和票据如何流动。</div>
+      <div class="action-row"><button id="replay" class="quiet" type="button" disabled>重播流向</button><button id="ledger" class="quiet" type="button">流水</button><button id="reset" class="quiet reset" type="button">重开</button></div>
+    </div>
+  </aside>
+</main>
+<footer class="totals" aria-label="演练累计状态">
+  <div class="metric"><span>已用授信</span><strong id="exposure">¥0</strong></div>
+  <div class="metric"><span>冻结保证金</span><strong id="locked">¥0</strong></div>
+  <div class="metric"><span>销售归集</span><strong id="recovered">¥0</strong></div>
+  <div class="metric"><span>应收融资余额</span><strong id="arOutstanding">¥0</strong></div>
+  <div class="metric"><span>交付车辆</span><strong id="delivered">0 台</strong></div>
+  <div class="metric"><span>已接入结算</span><strong id="linked">0 / 5</strong></div>
+  <div class="by">Author: PENGYI<br><span>2026-11-23 · v1.0.0</span></div>
+</footer>
+<dialog id="modal" aria-labelledby="modalTitle"><form method="dialog" class="modal-head"><h2 id="modalTitle"></h2><button class="quiet" aria-label="关闭" value="close">关闭</button></form><div id="modalBody"></div></dialog>
+<noscript>请启用 JavaScript 运行游戏。不需要登录、网络连接或金融账户。</noscript>
+<script>
+// Original procedural 3D scene, PENGYI. X east, Y up, Z south; 1 unit ~ 1 m (stylised).
+(function(root, make) {
+  const api=make();
+  if(typeof module==='object') module.exports=api; else root.CF_SCENE=api;
+})(globalThis,function(){
+  'use strict';
+  const VERSION='1.0.0', BOUNDS={x:25,z:16}, SPAWN={x:-5,z:3};
+  const plots=[
+    {id:'supplier',n:'01',name:'零部件供应商',en:'COMPONENTS',x:-17,z:-7,w:10,d:6.2,h:4.8,accent:'#e8aa60',door:{x:-17,z:-3.05}},
+    {id:'oem',n:'02',name:'主机厂',en:'ASSEMBLY CAMPUS',x:0,z:-10,w:15,d:7.2,h:5.9,accent:'#fb786d',door:{x:0,z:-5.38}},
+    {id:'d1',n:'03',name:'海岸展厅',en:'DEALER A',x:-.5,z:8.2,w:6.9,d:5,h:2.85,accent:'#76cfff',door:{x:-.5,z:11.55}},
+    {id:'d2',n:'04',name:'云港展厅',en:'DEALER B',x:9,z:7.5,w:6.8,d:5,h:2.85,accent:'#8eb1ff',door:{x:9,z:10.85}},
+    {id:'d3',n:'05',name:'远山展厅',en:'DEALER C',x:18.5,z:6.8,w:6.6,d:5,h:2.85,accent:'#a4a4ff',door:{x:18.5,z:10.15}},
+    {id:'bank',n:'CF',name:'银行操作台',en:'CORPORATE BANK',x:-17,z:7.6,w:8.5,d:6,h:5.3,accent:'#7ff1c2',door:{x:-17,z:11.51}},
+  ];
+  const spots=Object.fromEntries(plots.map(p=>[p.id,p]));
+  // Symbolic origin for payments from outside the six explorable buildings.
+  const retail={id:'retail',x:23,z:13.5};
+  const capital={id:'capital',x:20.9,z:-1.5};
+  const palette={pad:'#243955',road:'#17263a',walk:'#344c61',lane:'#647c8d',metal:'#38506a',
+    pale:'#b4c9d7',glass:'#21445d',dark:'#142b3d',green:'#2b7766',trim:'#b3dddf'};
+  const tint=(hex,k)=>'#'+[1,3,5].map(i=>Math.round(Math.max(0,Math.min(255,parseInt(hex.slice(i,i+2),16)*k))).toString(16).padStart(2,'0')).join('');
+  const face=(m,pts,color,id,normal)=>m.push({pts,color,id,normal});
+  function prism(m,ring,y,Y,c,id) {
+    face(m,ring.map(([x,z])=>[x,Y,z]),tint(c,1.08),id,[0,1,0]);
+    face(m,ring.slice().reverse().map(([x,z])=>[x,y,z]),tint(c,.62),id,[0,-1,0]);
+    ring.forEach(([x,z],i)=>{
+      const [a,b]=ring[(i+1)%ring.length], norm=Math.hypot(b-z,a-x);
+      const nx=-(b-z)/norm,nz=(a-x)/norm;
+      const k=.75+.10*(nz+nx*.4);
+      face(m,[[x,y,z],[a,y,b],[a,Y,b],[x,Y,z]],tint(c,k),id,[nx,0,nz]);
+    });
+  }
+  function box(m,x,y,z,w,h,d,c,id=null){
+    const X=w/2,Z=d/2;
+    prism(m,[[x-X,z-Z],[x-X,z+Z],[x+X,z+Z],[x+X,z-Z]],y,y+h,c,id);
+  }
+  function cylinder(m,x,y,z,rx,h,rz,c,id=null,sides=12){
+    prism(m,Array.from({length:sides},(_,i)=>{
+      const a=-2*Math.PI*(i+.5)/sides;return [x+Math.cos(a)*rx,z+Math.sin(a)*rz];
+    }),y,y+h,c,id);
+  }
+  function plate(m,x,z,w,d,c){box(m,x,.018,z,w,.014,d,c,c===palette.road||c==='#465f74'?'surface':'mark');}
+  function car(m,x,z,c,id=null){
+    box(m,x,.14,z,1.20,.31,2.26,c,id);
+    box(m,x,.40,z-.12,.95,.43,1.20,'#264660',id);
+    box(m,x,.81,z-.12,.93,.085,1.16,c,id);
+    for(const dx of [-.63,.63])for(const dz of [-.72,.72]) box(m,x+dx,.025,z+dz,.14,.31,.47,'#172634',id);
+    for(const dx of [-.41,.41]){
+      box(m,x+dx,.25,z+1.13,.31,.11,.05,'#dcfff9',id);
+      box(m,x+dx,.25,z-1.13,.31,.11,.05,'#ed7166',id);
+    }
+  }
+  function truck(m,x,z,c){
+    box(m,x,.08,z,1.44,.37,2.95,'#26384b');
+    box(m,x,.45,z-.45,1.41,1.05,1.91,c);
+    box(m,x,.45,z+1,1.22,.73,.96,'#83a6b6');
+    box(m,x,.85,z+1.48,.97,.21,.045,'#2a4c60');
+    for(const i of [-1,1])for(const p of [-.98,.95])box(m,x+i*.74,.03,z+p,.16,.44,.48,'#17212b');
+  }
+  function facade(m,p){
+    const {id,x,z,w,d,accent}=p, f=z+d/2, wall=id==='bank'?'#557a7d':'#5d738a';
+    box(m,x,.03,z,w+.56,.17,d+.54,'#61788c',id);
+    box(m,x,.202,f+.47,w*.92,.09,.73,'#506a7e',id);
+    if(id==='supplier'){
+      box(m,x,.18,z,w,3.10,d,wall,id);
+      box(m,x,3.20,z,w+.32,.33,d+.34,accent,id);
+      for(const a of [-2.77,0,2.77]){
+        box(m,x+a,.30,f+.03,1.97,2.12,.11,'#142c40',id);
+        for(let h=0;h<5;h++)box(m,x+a,.45+h*.36,f+.105,1.82,.073,.04,'#527491',id);
+        box(m,x+a,2.51,f+.38,2.24,.16,.88,accent,id);
+      }
+      for(const a of [-2.6,2.6]) box(m,x+a,3.56,z-.9,3.4,.32,1.35,'#365163',id);
+      for(const a of [-3.75,-2.87]){
+        cylinder(m,x+a,3.55,z-1.8,.32,1.22,.32,'#a3b8be',id,8);
+        cylinder(m,x+a,4.78,z-1.8,.40,.14,.40,'#d9ab73',id,8);
+      }
+      for(const a of [3.7,4.45]) for(const b of [f+.61,f+1.27]) box(m,x+a,.13,b,.64,.58,.60,'#c18555',id);
+    } else if(id==='oem'){
+      box(m,x,.18,z,w,4.1,d,'#698297',id);
+      box(m,x,4.28,z,w+.29,.36,d+.28,'#b8c8d0',id);
+      box(m,x-3.28,4.65,z-.68,7.7,.23,4.62,'#183b56',id);
+      for(let i=0;i<6;i++)for(let j=0;j<3;j++)box(m,x-6.45+i*1.28,4.89,z-2.15+j*1.47,1.13,.06,1.30,'#3d7187',id);
+      box(m,x+4.95,4.65,z-.94,3.73,.83,3.8,'#677f95',id);
+      box(m,x+4.95,5.48,z-.94,3.91,.31,3.98,accent,id);
+      box(m,x,3.19,f+.10,w+.14,.33,.27,accent,id);
+      for(let i=0;i<7;i++){
+        const a=-6.35+i*2.11;
+        box(m,x+a,.43,f+.035,1.81,2.53,.145,i===3?'#2b5171':'#19374c',id);
+        box(m,x+a,2.52,f+.12,1.73,.17,.055,'#81cbce',id);
+        box(m,x+a,.62,f+.122,.07,1.85,.053,'#597b8a',id);
+      }
+      box(m,x,2.91,f+.52,5.2,.21,1.27,'#e57d72',id);
+    } else if(id==='bank'){
+      box(m,x,.18,z,w,3.77,d,'#62888e',id);
+      box(m,x,3.94,z,w+.43,.29,d+.40,'#80c7bd',id);
+      box(m,x,3.87,f+.48,w+.33,.31,1.45,'#8dedd0',id);
+      for(const a of [-3.29,-1.62,1.62,3.29]){
+        box(m,x+a,.26,f+.35,.38,3.31,.45,'#aac4c2',id);
+        box(m,x+a,.44,f-.008,.82,2.87,.08,'#254a5a',id);
+      }
+      box(m,x,.27,f+.01,2.06,2.83,.11,'#194a55',id);
+      box(m,x,.25,f+.94,2.8,.10,1.06,'#6f8f9d',id);
+      cylinder(m,x,4.28,z-.3,1.17,.44,1.17,'#366d76',id);
+      cylinder(m,x,4.74,z-.3,.86,.26,.86,'#90e9d4',id);
+    } else {
+      box(m,x,.18,z,w,2.35,d,'#5e7c93',id);
+      box(m,x,2.55,z,w+.36,.28,d+.39,accent,id);
+      box(m,x,2.38,f+.42,w+.15,.16,1.09,accent,id);
+      for(const a of [-2.32,0,2.32]){
+        box(m,x+a,.37,f+.02,1.86,1.74,.15,'#244959',id);
+        box(m,x+a,1.86,f+.126,1.75,.09,.045,'#a5cedc',id);
+        box(m,x+a,.47,f+.134,.08,1.29,.046,'#68a0ad',id);
+      }
+      box(m,x,2.84,z-.62,w*.62,.13,1.12,'#b7d3d5',id);
+      box(m,x,2.98,z-.65,w*.59,.09,.86,'#3d6b7c',id);
+      car(m,x-2.10,f+1.82,accent,id);
+      car(m,x+2.16,f+1.82,'#c8c6bb',id);
+    }
+  }
+  function tree(m,x,z){
+    box(m,x,.035,z,1.23,.19,1.23,'#58757d');
+    cylinder(m,x,.20,z,.11,.84,.11,'#7c645a',null,8);
+    cylinder(m,x,.91,z,.71,.52,.65,'#497a70',null,8);
+    cylinder(m,x,1.43,z,.55,.43,.53,'#60a58c',null,8);
+    cylinder(m,x,1.86,z,.38,.27,.37,'#73b797',null,8);
+  }
+  function lamp(m,x,z){
+    box(m,x,.05,z,.28,.14,.28,'#6b8090');
+    box(m,x,.17,z,.086,1.76,.087,'#547183');
+    box(m,x+.25,1.77,z,.53,.09,.09,'#547183');
+    box(m,x+.42,1.76,z,.25,.095,.23,'#e0eddd');
+  }
+  function terrain(){
+    const m=[];
+    box(m,0,-1.28,0,53,.60,35,'#162c46','base');
+    box(m,0,-.68,0,52,.62,34,palette.pad,'base');
+    box(m,0,-.061,0,51,.06,33,palette.walk,'base');
+    for(const [x,z,w,d] of [[0,0,51,5.10],[-10.8,0,3.9,33],[0,14.4,51,3.16],[13,-11.9,24,5.6]])plate(m,x,z,w,d,palette.road);
+    for(let x=-24;x<25;x+=3) {if(Math.abs(x+10.8)>2.7) plate(m,x,0,1.5,.065,palette.lane);plate(m,x,14.4,1.3,.064,palette.lane);}
+    for(let z=-14;z<=14;z+=2.9)if(Math.abs(z)>3.2)plate(m,-10.8,z,.067,1.21,palette.lane);
+    for(const [x,z,w,d] of [[-17,-7,12.3,8.4],[0,-10,16.6,9.0],[-17,7.6,10.7,8.0],[-.5,9,8.4,7.7],[9,8.4,8.6,7.7],[18.5,7.6,8.6,7.7]])plate(m,x,z,w,d,'#465f74');
+    for(const [x,z] of [[-23,-12],[-23,4.6],[-23,12.2],[-8,8],[-6,-5],[7,-5],[13,-5],[24,3.65],[24,11.3],[22,-14],[10,-13]])tree(m,x,z);
+    for(const [x,z] of [[-21,2.74],[-13,2.74],[-7,2.74],[3,2.74],[12,2.74],[21,2.74],[-4,13.3],[5,13.3],[14,13.3]])lamp(m,x,z);
+    for(const [x,z] of [[-10.8,2.2],[-10.8,-2.2]])for(let i=0;i<7;i++)plate(m,x+(i-3)*.51,z,.22,.85,'#a4b1b3');
+    for(let j=0;j<6;j++)plate(m,12+j*1.6,-11.12,.047,2.14,'#72899b');
+    truck(m,14,-12.41,'#e2a66d');truck(m,19.9,-12.42,'#6daed1');
+    for(const [x,z] of [[-21.8,-15.3],[-18.7,-15.3],[-15.6,-15.3]])box(m,x,.12,z,2.45,.67,1.12,'#7b8c98');
+    return m;
+  }
+  function actor(x=0,z=0,phase=0,walking=false,heading=0){
+    const m=[],step=walking?Math.sin(phase*11)*.22:0,bob=walking?Math.abs(step)*.48:0;
+    for(const s of [-1,1]){
+      box(m,s*.24,.05,.05+s*step,.34,.28,.50,'#2e3d61','CF');
+      cylinder(m,s*.55,.39+bob,-s*step,.15,.44,.16,'#f1c19c','CF',8);
+    }
+    cylinder(m,0,.25+bob,0,.52,.61,.37,'#307f79','CF',12);
+    box(m,0,.51+bob,.36,.58,.18,.09,'#a4edd6','CF');
+    cylinder(m,0,.83+bob,0,.56,.51,.49,'#f6cba2','CF');
+    cylinder(m,0,1.29+bob,-.035,.63,.18,.53,'#284768','CF');
+    cylinder(m,0,1.44+bob,-.035,.53,.14,.45,'#44758b','CF');
+    box(m,0,1.28+bob,.44,.66,.09,.29,'#24415f','CF');
+    for(const e of [-.156,.156])box(m,e,1.055+bob,.448,.079,.102,.05,'#2a3549','CF');
+    box(m,0,.94+bob,.50,.14,.034,.035,'#bb635e','CF');
+    const co=Math.cos(heading),si=Math.sin(heading);
+    return m.map(f=>({...f,pts:f.pts.map(([a,b,c])=>[x+a*co+c*si,b,z-a*si+c*co]),normal:[f.normal[0]*co+f.normal[2]*si,f.normal[1],-f.normal[0]*si+f.normal[2]*co]}));
+  }
+  function objects(){const m=[];for(const p of plots)facade(m,p);return m;}
+  return {VERSION,BOUNDS,SPAWN,plots,spots,retail,capital,terrain,objects,actor};
+});
+</script>
+<script>
+(function(root, make) {
+  const api = make();
+  if (typeof module === 'object') module.exports = api; else root.CF_FINANCE = api;
+})(globalThis, function() {
+  'use strict';
+  const CAP = 3_000_000;
+  const DEALERS = {
+    d1: {id:'d1', name:'海岸展厅', face:600000, depositRate:25, cars:6, sales:690000},
+    d2: {id:'d2', name:'云港展厅', face:800000, depositRate:30, cars:8, sales:920000},
+    d3: {id:'d3', name:'远山展厅', face:500000, depositRate:35, cars:5, sales:460000},
+  };
+  const AR = {face:600000, advance:480000, days:60, rate:0.036};
+  AR.fee = Math.round(AR.advance * AR.rate * AR.days / 365);
+  AR.residual = AR.face - AR.advance - AR.fee;
+  const fmt = v => '¥' + new Intl.NumberFormat('zh-CN').format(v);
+  const CASH = {oem:'主机厂', supplier:'零部件供应商', d1:'海岸展厅', d2:'云港展厅', d3:'远山展厅'};
+  const billFee = d => Math.round(d.face * 0.0005); // game parameter, not a live tariff
+  const deposit = d => d.face * d.depositRate / 100;
+  const e = (type, from, to, label, amount=null) => ({type,from,to,label,amount});
+  const deal = (id, line, at, title, button, detail) => ({id:`${id}:${line}`,at,title,button,detail});
+  const DEMO = '教学模拟，不办理实际授信、开票、付款或开户。';
+
+  function fresh() {
+    return {facility:false, dealers:Object.fromEntries(Object.keys(DEALERS).map(id=>[id,{stage:0,topUp:0}])),
+      supplier:0, accounts:{}, ledger:[], next:1};
+  }
+  function metrics(s) {
+    let exposure=0, locked=0, recovered=0, fees=0, delivered=0, closed=0;
+    for (const d of Object.values(DEALERS)) {
+      const k=s.dealers[d.id].stage;
+      if(k>=2 && k<6) locked+=deposit(d);
+      if(k>=2) fees+=billFee(d);
+      if(k>=3 && k<6) exposure+=d.face;
+      if(k>=4) delivered+=d.cars;
+      if(k>=5) recovered+=d.sales;
+      if(k>=6) closed++;
+    }
+    return {exposure,locked,recovered,fees,delivered,closed,
+      limit:s.facility?CAP:0, available:s.facility?CAP-exposure:0,
+      arOutstanding:s.supplier===2?AR.advance:0,
+      arFee:s.supplier>=3?AR.fee:0, linked:Object.keys(s.accounts).length};
+  }
+  function dealerSteps(s,id) {
+    const d=DEALERS[id]; if(!d) return [];
+    return [
+      deal(id,'order',id,'核验车辆采购','模拟提交采购',`${d.name}提交 ${d.cars} 台车模拟订单。核对合同、采购主体及贸易背景，票面 ${fmt(d.face)}。`),
+      deal(id,'margin','bank','冻结保证金并计费','模拟交存保证金',`${d.depositRate}% 保证金 ${fmt(deposit(d))} 冻结；手续费 ${fmt(billFee(d))} 从可用资金单独扣收，不减少票面。`),
+      deal(id,'accept','bank','出票与银行承兑','模拟银行承兑','经销商作为出票人申请，银行承兑，主机厂收票。银承不是增值税发票，承兑时也不是已收到现金。'),
+      deal(id,'ship','oem','发车与提货','模拟主机厂发车',`核对票据与教学协议中的放车条件，主机厂发出 ${d.cars} 台车至${d.name}。`),
+      deal(id,'sell',id,'销售回款归集','模拟归集销售款',`模拟终端购车款 ${fmt(d.sales)} 进入经销商结算账户。回款本身不自动解除保证金。`),
+      deal(id,'settle','bank','到期兑付与解冻','模拟到期兑付',`先备足 ${fmt(d.face)} 的到期资金，银行向持票人兑付票款；履约后按本案约定解除保证金，不从票面再扣手续费。`),
+    ];
+  }
+  const credit = {id:'credit',at:'oem',title:'主机厂综合授信',button:'模拟登记授信',detail:`本案设置 ${fmt(CAP)} 的经审批框架，用于教学中银行与主机厂约定的采购融资。额度与现金不同；经销商单笔仍需核验和审批。`};
+  const supplierSteps = [
+    {id:'ar:deliver',at:'supplier',title:'赊销交货与验收',button:'模拟交货并确认应收',detail:`供应商交付零部件，主机厂验收；按虚构合同 ${AR.days} 日后付款，形成 ${fmt(AR.face)} 的应收。未结算不等于逾期。`},
+    {id:'ar:advance',at:'bank',title:'核验后应收融资',button:'模拟投放应收融资',detail:`核验合同、验收、应收权属和重复融资风险后，按教学假设预付 ${fmt(AR.advance)}（80%）。3.60% 年化为示例，不代表比亚迪或银行报价。`},
+    {id:'ar:close',at:'oem',title:'回款、扣本息与付余款',button:'模拟到期回收',detail:`主机厂支付 ${fmt(AR.face)} 到约定回款账户；银行收回本金 ${fmt(AR.advance)}、费用 ${fmt(AR.fee)}，供应商收到余款 ${fmt(AR.residual)}。`},
+  ];
+
+  function action(s,mode,id) {
+    if (mode==='credit') return s.facility?null:credit;
+    if (mode==='dealer') {
+      if(!s.facility) return credit;
+      const d=DEALERS[id]??DEALERS.d1, st=s.dealers[d.id];
+      if(st.stage===5 && d.sales+st.topUp<d.face) {
+        return deal(d.id,'topup',d.id,'补足到期资金','模拟补足资金',`销售回款还缺 ${fmt(d.face-d.sales-st.topUp)}。先用模拟自有资金补足；不能用完成按钮跳过缺口。`);
+      }
+      return dealerSteps(s,d.id)[st.stage]??null;
+    }
+    if (mode==='supplier') return supplierSteps[s.supplier]??null;
+    if (mode==='cash' && CASH[id] && !s.accounts[id]) return {id:`cash:${id}`,at:id,title:'自愿接入结算服务',button:'模拟授权结算服务',detail:`${CASH[id]}按自身需求选择账户、收付款和工资代发。授信与账户选择分开；演练不包含真实账户、员工或工资数据。`};
+    return null;
+  }
+  function apply(s,id) {
+    let expected, events=[], next=structuredClone(s), type, line;
+    [type,line]=id.split(':');
+    if (id==='credit') {
+      expected=action(s,'credit');
+      if(expected) { next.facility=true; events=[e('paper','bank','oem','授信框架确认（无资金划转）',CAP)]; }
+    } else if (DEALERS[type]) {
+      const d=DEALERS[type]; expected=action(s,'dealer',type);
+      if(expected?.id===id && next.facility) {
+        const st=next.dealers[type];
+        if(line!=='topup') st.stage++;
+        if(line==='order') events=[e('paper',type,'oem',`${d.cars} 台车采购订单与贸易核验`)];
+        if(line==='margin') events=[e('cash',type,'bank','交存冻结保证金',deposit(d)),e('cash',type,'bank','另行扣收承兑手续费',billFee(d))];
+        if(line==='accept') {
+          if(metrics(s).available<d.face) return {ok:false,error:'模拟额度不足。',state:s,events:[]};
+          events=[e('paper',type,'bank','经销商出票申请承兑'),e('paper','bank','oem','银行承兑后主机厂收票',d.face)];
+        }
+        if(line==='ship') events=[e('cargo','oem',type,'主机厂发车',d.cars)];
+        if(line==='sell') events=[e('cash','retail',type,'终端销售款进入结算户',d.sales)];
+        if(line==='topup') { st.topUp=d.face-d.sales; events=[e('cash','capital',type,'模拟自有资金补足',st.topUp)]; }
+        if(line==='settle') events=[e('cash',type,'bank','经销商备足到期款',d.face),e('cash','bank','oem','承兑银行向持票人兑付',d.face),e('cash','bank',type,'履约后解冻保证金（非收入）',deposit(d))];
+      }
+    } else if (type==='ar') {
+      expected=action(s,'supplier');
+      if(expected?.id===id) {
+        next.supplier++;
+        if(line==='deliver') events=[e('cargo','supplier','oem','零部件交付验收'),e('paper','oem','supplier','形成合同应收，尚未付款',AR.face)];
+        if(line==='advance') events=[e('paper','supplier','bank','申请融资并核验应收'),e('cash','bank','supplier','模拟保理预付',AR.advance)];
+        if(line==='close') events=[e('cash','oem','bank','主机厂付至约定回款户',AR.face),e('cash','bank','supplier','扣本息后支付应收余款',AR.residual)];
+      }
+    } else if (type==='cash') {
+      expected=action(s,'cash',line);
+      if(expected?.id===id) {
+        next.accounts[line]=true;
+        events=[e('paper',line,'bank','自愿选择结算与代发服务（无资金划转）')];
+      }
+    }
+    if(expected?.id!==id || !events.length) return {ok:false,error:'请先完成上一关；本次未记账。',state:s,events:[]};
+    const row={number:next.next++, id, title:expected.title, events};
+    next.ledger.push(row);
+    return {ok:true,state:next,row,events};
+  }
+  return {fresh, metrics, action, apply, dealerSteps, supplierSteps, DEALERS, CASH, AR, CAP, DEMO, fmt, deposit, billFee};
+});
+</script>
+<script>
+(function(root,make){const api=make();if(typeof module==='object')module.exports=api;else root.CF_NAV=api;})(globalThis,function(){
+  'use strict';
+  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+  function camera(w,h,angle=.26,zoom=1){
+    const sin=Math.sin(angle),cos=Math.cos(angle),tilt=.52,up=.86;
+    const spanX=55*Math.abs(cos)+36*Math.abs(sin), spanY=(55*Math.abs(sin)+36*Math.abs(cos))*tilt+6;
+    const scale=Math.min((w-28)/spanX,(h-60)/spanY)*zoom;
+    const x0=w*.5,y0=h*.525;
+    return {
+      project([x,y,z]){return {x:x0+(x*cos-z*sin)*scale,y:y0+((x*sin+z*cos)*tilt-y*up)*scale};},
+      ground(x,y){const u=(x-x0)/scale,v=(y-y0)/(scale*tilt);return {x:u*cos+v*sin,z:v*cos-u*sin};},
+      depth([x,y,z]){return x*sin+z*cos+y*tilt/up;},
+      visible([nx,ny,nz]){return nx*sin+ny*tilt/up+nz*cos>1e-6;},
+      scale
+    };
+  }
+  function free(p,plots,bounds){
+    return Math.abs(p.x)<=bounds.x && Math.abs(p.z)<=bounds.z && !plots.some(b=>Math.abs(p.x-b.x)<b.w/2+.45 && Math.abs(p.z-b.z)<b.d/2+.45);
+  }
+  function clear(a,b,plots,bounds){
+    const count=Math.max(1,Math.ceil(Math.hypot(b.x-a.x,b.z-a.z)/.21));
+    for(let i=0;i<=count;i++){const t=i/count;if(!free({x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t},plots,bounds))return false;}
+    return true;
+  }
+  function route(from,target,plots,bounds){
+    const to={x:clamp(target.x,-bounds.x,bounds.x),z:clamp(target.z,-bounds.z,bounds.z)};
+    if(!free(to,plots,bounds))return [];
+    if(clear(from,to,plots,bounds))return [to];
+    const step=.5,key=p=>p.x+','+p.z;
+    function nearby(p){
+      const options=[];
+      const x=Math.round(p.x/step)*step,z=Math.round(p.z/step)*step;
+      for(let i=-2;i<=2;i++)for(let j=-2;j<=2;j++){
+        const a={x:x+i*step,z:z+j*step};if(clear(p,a,plots,bounds))options.push(a);
+      }
+      return options.sort((a,b)=>Math.hypot(a.x-p.x,a.z-p.z)-Math.hypot(b.x-p.x,b.z-p.z))[0];
+    }
+    const start=nearby(from),goal=nearby(to);if(!start||!goal)return [];
+    const h=p=>Math.abs(p.x-goal.x)+Math.abs(p.z-goal.z);
+    const open=[{...start,g:0,prev:null}],seen=new Map([[key(start),0]]);
+    while(open.length){
+      let idx=0;for(let i=1;i<open.length;i++)if(open[i].g+h(open[i])<open[idx].g+h(open[idx]))idx=i;
+      const cur=open.splice(idx,1)[0];
+      if(key(cur)===key(goal)){
+        const path=[to];for(let at=cur;at;at=at.prev)path.push({x:at.x,z:at.z});path.reverse();
+        const smooth=[];let a=from;
+        for(let i=0;i<path.length;){let j=path.length-1;while(j>i&&!clear(a,path[j],plots,bounds))j--;a=path[j];smooth.push(a);i=j+1;}
+        return smooth;
+      }
+      if(cur.g!==seen.get(key(cur)))continue;
+      for(const [dx,dz] of [[step,0],[-step,0],[0,step],[0,-step]]){
+        const p={x:cur.x+dx,z:cur.z+dz};const g=cur.g+step;
+        if(!clear(cur,p,plots,bounds)||g>=(seen.get(key(p))??Infinity))continue;
+        seen.set(key(p),g);open.push({...p,g,prev:cur});
+      }
+    }
+    return [];
+  }
+  return {camera,free,clear,route};
+});
+</script>
+<script>
+(() => {
+  'use strict';
+  const S=globalThis.CF_SCENE,F=globalThis.CF_FINANCE,N=globalThis.CF_NAV;
+  const $=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d');
+  const media=matchMedia('(prefers-reduced-motion: reduce)');
+  const colors={cash:'#84edc7',paper:'#cab2ff',cargo:'#72cfff'};
+  const kind={cash:'资金',paper:'单据',cargo:'货物'};
+  const nodeName=id=>S.spots[id]?.name??({retail:'终端客户',capital:'经销商自有资金'})[id];
+  const point=id=>S.spots[id]?.door??S[id];
+  const labels=new Map(), ground=S.terrain(), buildings=S.objects();
+  let state=F.fresh(), mode='dealer', dealer='d1', party='oem', pin='oem';
+  let position={...S.SPAWN}, path=[], arrival=null, face=0, phase=0, movingAction=null, target=null;
+  let angle=.26, w=0,h=0,dpr=1,cam,base=null,visible=[],hits=[],frameId=0,last=0,animation=null;
+
+  const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
+  for(const p of S.plots){
+    const b=node('button','','pin');b.type='button';b.dataset.plot=p.id;b.style.setProperty('--accent',p.accent);
+    b.append(node('b',p.n),node('span',p.name));b.addEventListener('click',()=>choosePlot(p.id));
+    $('markers').appendChild(b);labels.set(p.id,b);
+  }
+  function shape(points,fill,stroke=null,width=1){
+    ctx.beginPath();ctx.moveTo(points[0].x,points[0].y);for(let i=1;i<points.length;i++)ctx.lineTo(points[i].x,points[i].y);
+    ctx.closePath();if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}
+  }
+  const screen=pts=>pts.map(cam.project);
+  const depth=f=>f.pts.reduce((n,p)=>n+cam.depth(p),0)/f.pts.length;
+  function projectFace(f){return {id:f.id,points:screen(f.pts),color:f.color,z:depth(f)};}
+  function backdrop(){
+    ctx.clearRect(0,0,w,h);ctx.save();
+    const fade=ctx.createRadialGradient(w*.46,h*.5,40,w*.46,h*.5,Math.max(w,h)*.64);
+    fade.addColorStop(0,'#4c67834c');fade.addColorStop(1,'#52678405');
+    ctx.strokeStyle=fade;ctx.lineWidth=.7;
+    function line(a,b){const [x,y]=screen([[a[0],-1.3,a[1]],[b[0],-1.3,b[1]]]);ctx.beginPath();ctx.moveTo(x.x,x.y);ctx.lineTo(y.x,y.y);ctx.stroke();}
+    for(let i=-65;i<=65;i+=4){line([-65,i],[65,i]);line([i,-65],[i,65]);}
+    ctx.restore();
+    const blob=ctx.createRadialGradient(w*.49,h*.64,0,w*.49,h*.64,w*.49);
+    blob.addColorStop(0,'#030812ad');blob.addColorStop(1,'#05070d00');ctx.fillStyle=blob;ctx.fillRect(0,h*.37,w,h*.55);
+  }
+  function rebuild(){
+    if(w<=20 || h<=20)return;
+    cam=N.camera(w,h,angle);
+    const terrain=ground.filter(f=>f.id&&cam.visible(f.normal)).map(projectFace).sort((a,b)=>a.z-b.z);
+    visible=buildings.concat(ground.filter(f=>!f.id)).filter(f=>cam.visible(f.normal)).map(projectFace).sort((a,b)=>a.z-b.z);
+    hits=visible.filter(f=>f.id).reverse();
+    // Bake terrain once per view. Game assets stay inspectable as actual X/Y/Z vertices.
+    backdrop();
+    for(const key of ['base','surface','mark'])for(const f of terrain)if(f.id===key)shape(f.points,f.color,'#101e2c33',.62);
+    for(const p of S.plots){
+      const X=p.w/2,Z=p.d/2,d=p.z;
+      shape(screen([[p.x-X-.3,.039,d-Z],[p.x-X-.2,.039,d+Z+.88],[p.x+X+.84,.039,d+Z+.85],[p.x+X+.68,.039,d-Z]]),'#091b2f57');
+    }
+    if(!base)base=document.createElement('canvas');base.width=canvas.width;base.height=canvas.height;
+    base.getContext('2d').drawImage(canvas,0,0);
+    for(const p of S.plots){const a=cam.project([p.x,p.h+.47,p.z+.3]),b=labels.get(p.id);b.style.left=`${a.x}px`;b.style.top=`${a.y}px`;}
+    const x=cam.project([S.retail.x,0,S.retail.z]);$('retailMark').style.left=`${x.x}px`;$('retailMark').style.top=`${x.y}px`;
+    draw(performance.now());
+  }
+  function size(){
+    const r=canvas.getBoundingClientRect();w=r.width;h=r.height;dpr=Math.min(2,window.devicePixelRatio||1);
+    canvas.width=Math.max(1,Math.round(w*dpr));canvas.height=Math.max(1,Math.round(h*dpr));
+    ctx.setTransform(dpr,0,0,dpr,0,0);rebuild();
+  }
+  function oval(p,rx,ry,c){ctx.beginPath();ctx.ellipse(p.x,p.y,Math.max(.1,rx),Math.max(.1,ry),0,0,Math.PI*2);ctx.fillStyle=c;ctx.fill();}
+  function routeDraw(){
+    if(path.length && target){
+      ctx.save();ctx.strokeStyle='#cdf0e399';ctx.lineWidth=1.5;ctx.setLineDash([4,5]);ctx.beginPath();
+      const start=cam.project([position.x,.05,position.z]);ctx.moveTo(start.x,start.y);
+      for(const p of path){const v=cam.project([p.x,.05,p.z]);ctx.lineTo(v.x,v.y);}ctx.stroke();ctx.restore();
+      const a=cam.project([target.x,.06,target.z]);oval(a,9,4,'#78e6bf94');oval(a,4,2,'#e7f7eb');
+    }
+    if(pin && S.spots[pin]){const p=S.spots[pin].door,a=cam.project([p.x,.05,p.z]);oval(a,6,3,'#91efc58c');}
+  }
+  function arc(a,b,index){
+    const dy=19+Math.min(117,Math.hypot(b.x-a.x,b.y-a.y)*.25)+index*14;
+    return {c:{x:(a.x+b.x)/2,y:(a.y+b.y)/2-dy},at(t){const k=1-t;return {x:k*k*a.x+2*k*t*this.c.x+t*t*b.x,y:k*k*a.y+2*k*t*this.c.y+t*t*b.y};}};
+  }
+  function arrow(p,orientation,r,color){
+    const a=orientation;shape([{x:p.x+Math.cos(a)*r,y:p.y+Math.sin(a)*r},{x:p.x+Math.cos(a+2.48)*r,y:p.y+Math.sin(a+2.48)*r},{x:p.x+Math.cos(a-2.48)*r,y:p.y+Math.sin(a-2.48)*r}],color);
+  }
+  function transfers(now){
+    if(!animation)return;
+    const delta=now-animation.since;
+    for(let i=0;i<animation.events.length;i++){
+      const event=animation.events[i],start=point(event.from),end=point(event.to),color=colors[event.type];
+      if(!start||!end)continue;
+      const a=cam.project([start.x,.15,start.z]),b=cam.project([end.x,.15,end.z]);
+      const curve=arc(a,b,i%2),age=delta-i*1050,active=age>=0&&age<1980;
+      ctx.save();ctx.globalAlpha=active?.92:age>0?.40:.18;
+      ctx.strokeStyle=color;ctx.lineWidth=active?2.55:1.55;ctx.setLineDash(event.type==='paper'?[5,5]:event.type==='cargo'?[10,3]:[3,4]);
+      if(active){ctx.shadowColor=color;ctx.shadowBlur=11;}
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.quadraticCurveTo(curve.c.x,curve.c.y,b.x,b.y);ctx.stroke();ctx.setLineDash([]);
+      const at=curve.at(.93),tail=curve.at(.89);arrow(at,Math.atan2(at.y-tail.y,at.x-tail.x),5,color);
+      if(active&&!media.matches){
+        for(let j=0;j<3;j++){
+          const t=age/1720-j*.115;if(t<0||t>1)continue;
+          const q=curve.at(t),before=curve.at(Math.max(0,t-.018));const dir=Math.atan2(q.y-before.y,q.x-before.x);
+          ctx.globalAlpha=1-j*.24;oval(q,j===0?5.8:2.9,j===0?5.8:2.9,color);
+          if(j===0)arrow(q,dir,8,color);
+        }
+      }
+      ctx.restore();
+    }
+  }
+  function draw(now){
+    if(!base||!cam)return;
+    ctx.clearRect(0,0,w,h);ctx.drawImage(base,0,0,w,h);routeDraw();
+    const groundPt=cam.project([position.x,.03,position.z]);oval(groundPt,cam.scale*.61,cam.scale*.28,'#0b142998');
+    const actor=S.actor(position.x,position.z,phase,path.length>0&&!media.matches,face).filter(f=>cam.visible(f.normal)).map(projectFace);
+    const draws=visible.concat(actor).sort((a,b)=>a.z-b.z);
+    for(const f of draws)shape(f.points,f.color,'#0d18283f',.54);
+    transfers(now);
+    const b=cam.project([position.x,1.87,position.z]);$('actorBadge').style.left=`${b.x}px`;$('actorBadge').style.top=`${b.y-2}px`;
+  }
+  function updateCoord(walking){canvas.dataset.x=position.x.toFixed(3);canvas.dataset.z=position.z.toFixed(3);canvas.dataset.motion=walking?'walking':'idle';}
+  function tick(now){
+    frameId=0;const dt=Math.min(.045,last?(now-last)/1000:.016);last=now;
+    let d=(media.matches?32:15)*dt;
+    if(path.length){
+      while(path.length){
+        const p=path[0],dx=p.x-position.x,dz=p.z-position.z,len=Math.hypot(dx,dz);
+        if(len>1e-5)face=Math.atan2(dx,dz);
+        if(d>=len){position={...p};d-=len;path.shift();}
+        else{position.x+=dx*d/len;position.z+=dz*d/len;break;}
+      }
+      phase+=dt;updateCoord(path.length>0);
+      if(!path.length){const fin=arrival;arrival=null;target=null;fin?.();}
+    }
+    draw(now);
+    if(path.length || animation && !media.matches && now-animation.since<animation.events.length*1050+1400)start();else last=0;
+  }
+  function start(){if(!frameId)frameId=requestAnimationFrame(tick);}
+  function walk(to,label,onArrival){
+    const next=N.route(position,to,S.plots,S.BOUNDS);
+    if(!next.length){$('walkStatus').textContent='这格不可通行，请点路面或建筑入口。';return false;}
+    if(Math.hypot(position.x-to.x,position.z-to.z)<.06){path=[];target=null;arrival=null;updateCoord(false);onArrival?.();return true;}
+    path=next;target={...to};arrival=onArrival;
+    $('walkStatus').textContent=label?'CF 正前往 '+label:'CF 正在街上行走';updateCoord(true);start();return true;
+  }
+  function pinState(){for(const [id,m] of labels)m.setAttribute('aria-current',String(pin===id));}
+  function choosePlot(id){
+    if(movingAction)return;
+    pin=id;const p=S.spots[id];
+    if(mode==='cash'&&F.CASH[id])party=id;
+    else if(F.DEALERS[id]){mode='dealer';dealer=id;}
+    else if(id==='supplier')mode='supplier';else if(id==='oem')mode='credit';
+    $('eventStatus').textContent=id==='bank'?'银行操作台：按选中流程继续即可。':'';
+    ui();walk(p.door,p.name,()=>{ $('walkStatus').textContent='CF 已到达 '+p.name; });
+  }
+  function inside(p,poly){
+    let v=false;
+    for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+      const a=poly[i],b=poly[j];if((a.y>p.y)!==(b.y>p.y) && p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)v=!v;
+    }
+    return v;
+  }
+  canvas.addEventListener('click',ev=>{
+    if(!cam||movingAction)return;
+    const b=canvas.getBoundingClientRect(),p={x:ev.clientX-b.left,y:ev.clientY-b.top};
+    const f=hits.find(x=>inside(p,x.points));if(f){choosePlot(f.id);return;}
+    const g=cam.ground(p.x,p.y);if(Math.abs(g.x)>S.BOUNDS.x+.9 || Math.abs(g.z)>S.BOUNDS.z+.9)return;
+    walk(g,null,()=>{$('walkStatus').textContent='CF 已到达 · 可继续点地面或选择建筑';});
+  });
+  addEventListener('keydown',ev=>{
+    if($('modal').open || movingAction || ev.metaKey||ev.ctrlKey||ev.altKey)return;
+    const map={w:[0,-1],a:[-1,0],s:[0,1],d:[1,0],arrowup:[0,-1],arrowleft:[-1,0],arrowdown:[0,1],arrowright:[1,0]};
+    const dir=map[ev.key.toLowerCase()];if(!dir||ev.target!==canvas && !['w','a','s','d'].includes(ev.key.toLowerCase()))return;
+    ev.preventDefault();const [x,z]=dir;
+    const t={x:position.x+(x*Math.cos(angle)+z*Math.sin(angle))*3.2,z:position.z+(-x*Math.sin(angle)+z*Math.cos(angle))*3.2};
+    if(!N.free(t,S.plots,S.BOUNDS))return;walk(t,null,()=>{$('walkStatus').textContent='CF 已到达 · 键盘或点击可继续移动';});
+  });
+  function current(){return F.action(state,mode,mode==='cash'?party:dealer);}
+  function steps(){
+    if(mode==='dealer')return {done:state.dealers[dealer].stage+(state.facility?1:0),count:7,text:F.DEALERS[dealer].name+' · 经销商银承'};
+    if(mode==='supplier')return {done:state.supplier,count:3,text:'供应商 · 应收融资'};
+    if(mode==='cash')return {done:state.accounts[party]?1:0,count:1,text:F.CASH[party]+' · 账户服务'};
+    return {done:state.facility?1:0,count:1,text:'主机厂 · 授信框架'};
+  }
+  function activeButtons(){
+    for(const b of document.querySelectorAll('[data-mode]')){b.setAttribute('aria-pressed',String(b.dataset.mode===mode));b.disabled=!!movingAction;}
+    const deck=$('partners');deck.replaceChildren();const choices=mode==='dealer'?Object.fromEntries(Object.entries(F.DEALERS).map(([id,p])=>[id,p.name])):mode==='cash'?F.CASH:{};
+    for(const [id,name] of Object.entries(choices)){
+      const b=node('button',name);b.type='button';b.dataset.party=id;b.disabled=!!movingAction;
+      b.setAttribute('aria-pressed',String(id===(mode==='dealer'?dealer:party)));
+      b.addEventListener('click',()=>{if(mode==='dealer')dealer=id;else party=id;pin=id;$('eventStatus').textContent='';ui();const p=S.spots[id];walk(p.door,p.name,()=>{$('walkStatus').textContent='CF 已到达 '+p.name;});});deck.appendChild(b);
+    }
+  }
+  function amount(e){return e.amount==null?'':e.type==='cargo'?`${e.amount} 台`:F.fmt(e.amount);}
+  function ui(){
+    activeButtons();pinState();const n=steps(), act=current(),m=F.metrics(state),row=state.ledger.at(-1);
+    $('stepLabel').textContent=`${n.text} · ${n.done} / ${n.count}`;
+    $('stepTitle').textContent=act?.title??'这条路线已完成';
+    $('stepDetail').textContent=act?.detail??(mode==='dealer'?'车辆、到期兑付和保证金状态已闭环。可以切换另一家展厅或打开流水。':mode==='supplier'?'应收已按本案回款顺序结清。可以打开流水复核资金拆分。':'已登记模拟状态。现在可以继续其他业务路线。');
+    const progress=$('progress');progress.replaceChildren();for(let i=0;i<n.count;i++)progress.append(node('b',null,i<n.done?'past':i===n.done?'current':''));
+    $('execute').disabled=!act||!!movingAction;$('execute').textContent=movingAction?'CF 正在前往办理地点…':act?.button??'已完成';
+    if(row){const box=$('recent');box.replaceChildren();for(const ev of row.events){const span=node('span','','read');span.append(node('i',kind[ev.type]+' · ',ev.type),document.createTextNode(ev.label+(amount(ev)?' · '+amount(ev):'')));box.append(span);}}
+    else $('recent').textContent='还没有模拟交易。完成首个任务，看钱、车和票据如何流动。';
+    for(const k of ['exposure','locked','recovered','arOutstanding'])$(k).textContent=F.fmt(m[k]);
+    $('exposure').title=`模拟框架 ${F.fmt(m.limit)}，剩余额度 ${F.fmt(m.available)}`;
+    $('delivered').textContent=m.delivered+' 台';$('linked').textContent=m.linked+' / 5';$('replay').disabled=!row||!!movingAction;
+    canvas.dataset.actions=String(state.ledger.length);canvas.dataset.completed=String(m.closed);
+    draw(performance.now());
+  }
+  function replay(events){animation={events,since:media.matches?performance.now()-4000:performance.now()};start();}
+  function finish(act){
+    const r=F.apply(state,act.id);movingAction=null;
+    if(!r.ok){$('eventStatus').textContent=r.error;ui();return;}
+    state=r.state;$('eventStatus').textContent=`第 ${r.row.number} 笔 · 模拟完成`;
+    $('walkStatus').textContent='CF 已到达 '+S.spots[act.at].name+' · 操作已写入模拟流水';
+    replay(r.events);ui();
+  }
+  $('execute').addEventListener('click',()=>{
+    const act=current();if(!act||movingAction)return;
+    movingAction=act;pin=act.at;ui();
+    if(!walk(S.spots[act.at].door,S.spots[act.at].name,()=>finish(act))){movingAction=null;ui();}
+  });
+  for(const b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>{
+    if(movingAction)return;mode=b.dataset.mode;pin=mode==='dealer'?dealer:mode==='cash'?party:mode==='credit'?'oem':'supplier';$('eventStatus').textContent='';ui();
+  });
+  $('replay').addEventListener('click',()=>{const r=state.ledger.at(-1);if(r&&!movingAction)replay(r.events);});
+  function reset(){state=F.fresh();mode='dealer';dealer='d1';party='oem';pin='oem';position={...S.SPAWN};path=[];arrival=null;movingAction=null;target=null;animation=null;face=0;phase=0;
+    $('eventStatus').textContent='演练已重开，流水已清空。';$('walkStatus').textContent='点路面行走 · 点建筑选择任务';updateCoord(false);ui();}
+  $('reset').addEventListener('click',reset);
+  $('angleLeft').addEventListener('click',()=>{angle-=.21;rebuild();});$('angleRight').addEventListener('click',()=>{angle+=.21;rebuild();});$('viewReset').addEventListener('click',()=>{angle=.26;rebuild();});
+  $('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();else $('walkStatus').textContent='浏览器不支持全屏按钮，可在新窗口打开。';}catch{$('walkStatus').textContent='浏览器未允许本次全屏。';}});
+  function modal(title){$('modalTitle').textContent=title;$('modalBody').replaceChildren();$('modal').showModal();return $('modalBody');}
+  $('ledger').addEventListener('click',()=>{
+    const b=modal('模拟流水'),m=F.metrics(state);
+    b.append(node('p',`当前使用 ${F.fmt(m.exposure)}／已授信 ${F.fmt(m.limit)}；累计承兑手续费 ${F.fmt(m.fees)}；已结应收融资费用 ${F.fmt(m.arFee)}。`));
+    if(!state.ledger.length)b.append(node('p','还没有模拟流水。'));
+    for(const row of state.ledger.slice().reverse()){
+      const a=node('article');a.append(node('strong',`第 ${row.number} 笔 · ${row.title}`));
+      for(const e of row.events)a.append(node('p',`${nodeName(e.from)} → ${nodeName(e.to)}：${e.label}${amount(e)?' · '+amount(e):''}`));b.append(a);
+    }
+  });
+  $('sources').addEventListener('click',()=>{
+    const b=modal('资料与边界');
+    b.append(node('p','比亚迪公开披露提供产业结构参照，不是本游戏的交易对手。所有展厅、供应商、银行、账户、价格和融资类参数均为虚构。没有比亚迪背书，也不含任何真实合同、办理入口或客户数据。'));
+    const refs=[['比亚迪 2025 年可持续发展报告 · 供应链','https://www.bydglobal.com/material/__CN/group-official-website/file/en/esg/report/2025-byd-sustainability-report-en.pdf'],['比亚迪官方售前帮助中心 · 经销商与门店','https://www.byd.com/cn/help-center'],['建设银行 · 汽贸融','https://member.ccb.com/chn/company/gsjgsy/cpfw/gsyw/gylrzyw/qmr/index.shtml'],['建设银行 · 银行承兑汇票','https://ebank.ccb.com/chn/company/gsjgsy/cpfw/gsyw/pjyw/yxcdhp/index.shtml'],['农业银行 · 国内保理','https://www.abchina.com/cn/businesses/financing/dsttradefinace/201207/t20120725_787494.htm']];
+    const l=node('ul');for(const [text,href] of refs){const item=node('li'),a=node('a',text);a.href=href;a.target='_blank';a.rel='noopener noreferrer';item.append(a);l.append(item);}b.append(l,node('p','访问日期 2026-11-23。教学产品流程简化，并非银行合规、收费或授信建议。'+F.DEMO));
+  });
+  new ResizeObserver(size).observe(canvas);size();ui();updateCoord(false);canvas.dataset.ready='true';
+})();
+</script>
+</body>
+</html>
