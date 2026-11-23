@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="和 CF 一起步行探索 PCFD 对公金融小镇：从企业线索到公示原件与授权查询。">
+  <meta name="theme-color" content="#122b31">
+  <title>CF TOWN · PCFD 对公金融小镇</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./game.js"></script>
+</head>
+<body class="cf-town">
+  <header class="banner">
+    <div class="identity"><span class="brand" aria-hidden="true">CF</span><div><div class="wordmark">CF TOWN <span>✦</span> PCFD</div><h1>对公金融小镇</h1></div></div>
+    <div class="header-right"><span class="signal">探索模式</span><span id="progress" aria-live="polite">已探索 0 / 39</span><span class="author">Author: PENGYI</span></div>
+  </header>
+  <main>
+    <nav id="districts" aria-label="按对公金融职责探索不同街区"></nav>
+    <div class="game-shell">
+      <section class="scene" aria-label="3D 街区地图">
+        <canvas id="map" aria-label="CF 小镇 3D 地图。可用右侧建筑目录选择建筑，也可以按 WASD 或方向键移动。" tabindex="0"></canvas>
+        <div class="scene-title"><p id="district-en"></p><h2 id="district-label"></h2></div>
+        <div class="controls" aria-label="视角与位置">
+          <button id="rotate-left" type="button" aria-label="向左转动视角">↶</button>
+          <button id="rotate-right" type="button" aria-label="向右转动视角">↷</button>
+          <button id="reset" type="button" aria-label="让 CF 返回广场">回到广场</button>
+        </div>
+        <div class="play-tip"><span class="dot"></span><span id="movement" role="status">点击地面走路 · 点击建筑看简介</span></div>
+      </section>
+      <aside class="guide" aria-label="PCFD 建筑导览">
+        <section id="detail" class="detail" aria-labelledby="poi-name">
+          <div class="furniture"><span class="micro">PCFD FIELD GUIDE</span><span id="poi-id" class="badge">小镇入口</span></div>
+          <h2 id="poi-name">你好，我是 CF</h2>
+          <p id="poi-scope">点地面带我散步，点任一栋楼就能看这里为什么和对公金融有关。想看原资料时，点「进入网站」。</p>
+          <p id="poi-hint" class="hint"></p>
+          <p id="poi-limit" class="limit" hidden></p>
+          <a id="enter" class="enter" hidden target="_blank" rel="noopener noreferrer">进入网站 <span aria-hidden="true">·</span><small id="domain"></small></a>
+          <p id="source-note" class="limit" hidden>授权区只打开原站；不会发起征信、担保登记查询或读取个人备案。</p>
+          <button id="back-to-map" class="return" type="button">返回 3D 地图</button>
+        </section>
+        <section class="directory" aria-label="替代地图操作：搜索和选择建筑">
+          <div class="directory-top"><h2>建筑名录</h2><span id="list-count"></span></div>
+          <label for="search" class="sr-only">搜索建筑，可跨街区</label>
+          <input id="search" type="search" placeholder="搜索机构、编号或地区">
+          <div id="directory"></div>
+        </section>
+      </aside>
+    </div>
+    <footer><span>CF = Corporate Finance · PCFD 公开资料目录快照</span><a href="https://pengpengyi92.github.io/ac-town/">去 AC 资产托管小镇</a><span>虚构小镇 · 不代表机构背书 · 不做征信、授信或投资建议</span></footer>
+  </main>
+</body>
+</html>

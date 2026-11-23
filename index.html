@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="和 AC 一起步行探索 PACD 资产托管小镇：从资格核对到托管链与交收。">
+  <meta name="theme-color" content="#122b31">
+  <title>AC TOWN · PACD 资产托管小镇</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./game.js"></script>
+</head>
+<body>
+  <header class="banner">
+    <div class="identity"><span class="brand" aria-hidden="true">AC</span><div><div class="wordmark">AC TOWN <span>✦</span> PACD</div><h1>资产托管小镇</h1></div></div>
+    <div class="header-right"><span class="signal">探索模式</span><span id="progress" aria-live="polite">已探索 0 / 55</span><span class="author">Author: PENGYI</span></div>
+  </header>
+  <main>
+    <nav id="districts" aria-label="按资产托管职责探索不同街区"></nav>
+    <div class="game-shell">
+      <section class="scene" aria-label="3D 街区地图">
+        <canvas id="map" aria-label="AC 小镇 3D 地图。可用右侧建筑目录选择建筑，也可以按 WASD 或方向键移动。" tabindex="0"></canvas>
+        <div class="scene-title"><p id="district-en"></p><h2 id="district-label"></h2></div>
+        <div class="controls" aria-label="视角与位置">
+          <button id="rotate-left" type="button" aria-label="向左转动视角">↶</button>
+          <button id="rotate-right" type="button" aria-label="向右转动视角">↷</button>
+          <button id="reset" type="button" aria-label="让 AC 返回广场">回到广场</button>
+        </div>
+        <div class="play-tip"><span class="dot"></span><span id="movement" role="status">点击地面走路 · 点击建筑看简介</span></div>
+      </section>
+      <aside class="guide" aria-label="PACD 建筑导览">
+        <section id="detail" class="detail" aria-labelledby="poi-name">
+          <div class="furniture"><span class="micro">PACD FIELD GUIDE</span><span id="poi-id" class="badge">小镇入口</span></div>
+          <h2 id="poi-name">你好，我是 AC</h2>
+          <p id="poi-scope">点地面带我散步，点任一栋楼就能看这里为什么和资产托管有关。想看原资料时，点「进入网站」。</p>
+          <p id="poi-hint" class="hint"></p>
+          <p id="poi-limit" class="limit" hidden></p>
+          <a id="enter" class="enter" hidden target="_blank" rel="noopener noreferrer">进入网站 <span aria-hidden="true">·</span><small id="domain"></small></a>
+          <a id="sfc-note" class="sfc" hidden href="https://www.sfc.hk/TC/Quick-links/Others/Hyperlink-policy" target="_blank" rel="noopener noreferrer">香港证监会超链接说明</a>
+          <button id="back-to-map" class="return" type="button">返回 3D 地图</button>
+        </section>
+        <section class="directory" aria-label="替代地图操作：搜索和选择建筑">
+          <div class="directory-top"><h2>建筑名录</h2><span id="list-count"></span></div>
+          <label for="search" class="sr-only">搜索建筑，可跨街区</label>
+          <input id="search" type="search" placeholder="搜索机构、编号或地区">
+          <div id="directory"></div>
+        </section>
+      </aside>
+    </div>
+<footer><span>AC = Asset Custody · PACD 公开资料目录快照</span><a href="https://pengpengyi92.github.io/ac-town/cf/">去 CF 对公金融小镇</a><span>虚构小镇 · 不代表机构背书 · 不连接账户或交易</span></footer>
+  </main>
+</body>
+</html>
