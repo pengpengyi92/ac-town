@@ -1,0 +1,620 @@
+# AC Town flat color materials
+newmtl mfbf9ec
+Kd 0.984314 0.976471 0.925490
+illum 1
+
+newmtl mc4c2b8
+Kd 0.768627 0.760784 0.721569
+illum 1
+
+newmtl me2e0d4
+Kd 0.886275 0.878431 0.831373
+illum 1
+
+newmtl mb0aea5
+Kd 0.690196 0.682353 0.647059
+illum 1
+
+newmtl md5d4c9
+Kd 0.835294 0.831373 0.788235
+illum 1
+
+newmtl md7edff
+Kd 0.843137 0.929412 1.000000
+illum 1
+
+newmtl ma8b9c7
+Kd 0.658824 0.725490 0.780392
+illum 1
+
+newmtl mc2d5e6
+Kd 0.760784 0.835294 0.901961
+illum 1
+
+newmtl m97a6b3
+Kd 0.592157 0.650980 0.701961
+illum 1
+
+newmtl mb7c9d9
+Kd 0.717647 0.788235 0.850980
+illum 1
+
+newmtl mfbfdff
+Kd 0.984314 0.992157 1.000000
+illum 1
+
+newmtl mc4c5c7
+Kd 0.768627 0.772549 0.780392
+illum 1
+
+newmtl me2e4e6
+Kd 0.886275 0.894118 0.901961
+illum 1
+
+newmtl mb0b1b3
+Kd 0.690196 0.694118 0.701961
+illum 1
+
+newmtl md5d7d9
+Kd 0.835294 0.843137 0.850980
+illum 1
+
+newmtl m3b89eb
+Kd 0.231373 0.537255 0.921569
+illum 1
+
+newmtl m2e6bb7
+Kd 0.180392 0.419608 0.717647
+illum 1
+
+newmtl m357bd4
+Kd 0.207843 0.482353 0.831373
+illum 1
+
+newmtl m2960a5
+Kd 0.160784 0.376471 0.647059
+illum 1
+
+newmtl m3274c8
+Kd 0.196078 0.454902 0.784314
+illum 1
+
+newmtl mddd9d4
+Kd 0.866667 0.850980 0.831373
+illum 1
+
+newmtl maca9a5
+Kd 0.674510 0.662745 0.647059
+illum 1
+
+newmtl mc7c3bf
+Kd 0.780392 0.764706 0.749020
+illum 1
+
+newmtl m9b9894
+Kd 0.607843 0.596078 0.580392
+illum 1
+
+newmtl mbcb8b4
+Kd 0.737255 0.721569 0.705882
+illum 1
+
+newmtl m263852
+Kd 0.149020 0.219608 0.321569
+illum 1
+
+newmtl m1e2c40
+Kd 0.117647 0.172549 0.250980
+illum 1
+
+newmtl m22324a
+Kd 0.133333 0.196078 0.290196
+illum 1
+
+newmtl m1b2739
+Kd 0.105882 0.152941 0.223529
+illum 1
+
+newmtl m203046
+Kd 0.125490 0.188235 0.274510
+illum 1
+
+newmtl mc5f5e2
+Kd 0.772549 0.960784 0.886275
+illum 1
+
+newmtl m9abfb0
+Kd 0.603922 0.749020 0.690196
+illum 1
+
+newmtl mb1ddcb
+Kd 0.694118 0.866667 0.796078
+illum 1
+
+newmtl m8aac9e
+Kd 0.541176 0.674510 0.619608
+illum 1
+
+newmtl ma7d0c0
+Kd 0.654902 0.815686 0.752941
+illum 1
+
+newmtl m16a78f
+Kd 0.086275 0.654902 0.560784
+illum 1
+
+newmtl m118270
+Kd 0.066667 0.509804 0.439216
+illum 1
+
+newmtl m149681
+Kd 0.078431 0.588235 0.505882
+illum 1
+
+newmtl m0f7564
+Kd 0.058824 0.458824 0.392157
+illum 1
+
+newmtl m138e7a
+Kd 0.074510 0.556863 0.478431
+illum 1
+
+newmtl mffde85
+Kd 1.000000 0.870588 0.521569
+illum 1
+
+newmtl mc7ad68
+Kd 0.780392 0.678431 0.407843
+illum 1
+
+newmtl me6c878
+Kd 0.901961 0.784314 0.470588
+illum 1
+
+newmtl mb39b5d
+Kd 0.701961 0.607843 0.364706
+illum 1
+
+newmtl md9bd71
+Kd 0.850980 0.741176 0.443137
+illum 1
+
+newmtl mebddff
+Kd 0.921569 0.866667 1.000000
+illum 1
+
+newmtl mb7acc7
+Kd 0.717647 0.674510 0.780392
+illum 1
+
+newmtl md4c7e6
+Kd 0.831373 0.780392 0.901961
+illum 1
+
+newmtl ma59bb3
+Kd 0.647059 0.607843 0.701961
+illum 1
+
+newmtl mc8bcd9
+Kd 0.784314 0.737255 0.850980
+illum 1
+
+newmtl m9265e6
+Kd 0.572549 0.396078 0.901961
+illum 1
+
+newmtl m724fb3
+Kd 0.447059 0.309804 0.701961
+illum 1
+
+newmtl m835bcf
+Kd 0.513725 0.356863 0.811765
+illum 1
+
+newmtl m6647a1
+Kd 0.400000 0.278431 0.631373
+illum 1
+
+newmtl m7c56c4
+Kd 0.486275 0.337255 0.768627
+illum 1
+
+newmtl mf9f4ff
+Kd 0.976471 0.956863 1.000000
+illum 1
+
+newmtl mc2bec7
+Kd 0.760784 0.745098 0.780392
+illum 1
+
+newmtl me0dce6
+Kd 0.878431 0.862745 0.901961
+illum 1
+
+newmtl maeabb3
+Kd 0.682353 0.670588 0.701961
+illum 1
+
+newmtl md4cfd9
+Kd 0.831373 0.811765 0.850980
+illum 1
+
+newmtl mfff0bd
+Kd 1.000000 0.941176 0.741176
+illum 1
+
+newmtl mc7bb93
+Kd 0.780392 0.733333 0.576471
+illum 1
+
+newmtl me6d8aa
+Kd 0.901961 0.847059 0.666667
+illum 1
+
+newmtl mb3a884
+Kd 0.701961 0.658824 0.517647
+illum 1
+
+newmtl md9cca1
+Kd 0.850980 0.800000 0.631373
+illum 1
+
+newmtl me59c2f
+Kd 0.898039 0.611765 0.184314
+illum 1
+
+newmtl mb37a25
+Kd 0.701961 0.478431 0.145098
+illum 1
+
+newmtl mce8c2a
+Kd 0.807843 0.549020 0.164706
+illum 1
+
+newmtl ma06d21
+Kd 0.627451 0.427451 0.129412
+illum 1
+
+newmtl mc38528
+Kd 0.764706 0.521569 0.156863
+illum 1
+
+newmtl mfffbee
+Kd 1.000000 0.984314 0.933333
+illum 1
+
+newmtl mc7c4ba
+Kd 0.780392 0.768627 0.729412
+illum 1
+
+newmtl me6e2d6
+Kd 0.901961 0.886275 0.839216
+illum 1
+
+newmtl mb3b0a7
+Kd 0.701961 0.690196 0.654902
+illum 1
+
+newmtl md9d5ca
+Kd 0.850980 0.835294 0.792157
+illum 1
+
+newmtl mffe2a3
+Kd 1.000000 0.886275 0.639216
+illum 1
+
+newmtl mc7b07f
+Kd 0.780392 0.690196 0.498039
+illum 1
+
+newmtl me6cb93
+Kd 0.901961 0.796078 0.576471
+illum 1
+
+newmtl mb39e72
+Kd 0.701961 0.619608 0.447059
+illum 1
+
+newmtl md9c08b
+Kd 0.850980 0.752941 0.545098
+illum 1
+
+newmtl mffe1dd
+Kd 1.000000 0.882353 0.866667
+illum 1
+
+newmtl mc7b0ac
+Kd 0.780392 0.690196 0.674510
+illum 1
+
+newmtl me6cbc7
+Kd 0.901961 0.796078 0.780392
+illum 1
+
+newmtl mb39e9b
+Kd 0.701961 0.619608 0.607843
+illum 1
+
+newmtl md9bfbc
+Kd 0.850980 0.749020 0.737255
+illum 1
+
+newmtl me8686c
+Kd 0.909804 0.407843 0.423529
+illum 1
+
+newmtl mb55154
+Kd 0.709804 0.317647 0.329412
+illum 1
+
+newmtl md15e61
+Kd 0.819608 0.368627 0.380392
+illum 1
+
+newmtl ma2494c
+Kd 0.635294 0.286275 0.298039
+illum 1
+
+newmtl mc5585c
+Kd 0.772549 0.345098 0.360784
+illum 1
+
+newmtl mfff0c9
+Kd 1.000000 0.941176 0.788235
+illum 1
+
+newmtl mc7bb9d
+Kd 0.780392 0.733333 0.615686
+illum 1
+
+newmtl me6d8b5
+Kd 0.901961 0.847059 0.709804
+illum 1
+
+newmtl mb3a88d
+Kd 0.701961 0.658824 0.552941
+illum 1
+
+newmtl md9ccab
+Kd 0.850980 0.800000 0.670588
+illum 1
+
+newmtl me9f6c9
+Kd 0.913725 0.964706 0.788235
+illum 1
+
+newmtl mb6c09d
+Kd 0.713725 0.752941 0.615686
+illum 1
+
+newmtl md2ddb5
+Kd 0.823529 0.866667 0.709804
+illum 1
+
+newmtl ma3ac8d
+Kd 0.639216 0.674510 0.552941
+illum 1
+
+newmtl mc6d1ab
+Kd 0.776471 0.819608 0.670588
+illum 1
+
+newmtl m5b962c
+Kd 0.356863 0.588235 0.172549
+illum 1
+
+newmtl m477522
+Kd 0.278431 0.458824 0.133333
+illum 1
+
+newmtl m528728
+Kd 0.321569 0.529412 0.156863
+illum 1
+
+newmtl m40691f
+Kd 0.250980 0.411765 0.121569
+illum 1
+
+newmtl m4d8025
+Kd 0.301961 0.501961 0.145098
+illum 1
+
+newmtl me1ef82
+Kd 0.882353 0.937255 0.509804
+illum 1
+
+newmtl mb0ba65
+Kd 0.690196 0.729412 0.396078
+illum 1
+
+newmtl mcbd775
+Kd 0.796078 0.843137 0.458824
+illum 1
+
+newmtl m9ea75b
+Kd 0.619608 0.654902 0.356863
+illum 1
+
+newmtl mbfcb6f
+Kd 0.749020 0.796078 0.435294
+illum 1
+
+newmtl m223954
+Kd 0.133333 0.223529 0.329412
+illum 1
+
+newmtl m1b2c42
+Kd 0.105882 0.172549 0.258824
+illum 1
+
+newmtl m1f334c
+Kd 0.121569 0.200000 0.298039
+illum 1
+
+newmtl m18283b
+Kd 0.094118 0.156863 0.231373
+illum 1
+
+newmtl m1d3047
+Kd 0.113725 0.188235 0.278431
+illum 1
+
+newmtl m2d8283
+Kd 0.176471 0.509804 0.513725
+illum 1
+
+newmtl m236566
+Kd 0.137255 0.396078 0.400000
+illum 1
+
+newmtl m297576
+Kd 0.160784 0.458824 0.462745
+illum 1
+
+newmtl m1f5b5c
+Kd 0.121569 0.356863 0.360784
+illum 1
+
+newmtl m266f6f
+Kd 0.149020 0.435294 0.435294
+illum 1
+
+newmtl m93efd2
+Kd 0.576471 0.937255 0.823529
+illum 1
+
+newmtl m73baa4
+Kd 0.450980 0.729412 0.643137
+illum 1
+
+newmtl m84d7bd
+Kd 0.517647 0.843137 0.741176
+illum 1
+
+newmtl m67a793
+Kd 0.403922 0.654902 0.576471
+illum 1
+
+newmtl m7dcbb3
+Kd 0.490196 0.796078 0.701961
+illum 1
+
+newmtl mffd9a0
+Kd 1.000000 0.850980 0.627451
+illum 1
+
+newmtl mc7a97d
+Kd 0.780392 0.662745 0.490196
+illum 1
+
+newmtl me6c390
+Kd 0.901961 0.764706 0.564706
+illum 1
+
+newmtl mb39870
+Kd 0.701961 0.596078 0.439216
+illum 1
+
+newmtl md9b888
+Kd 0.850980 0.721569 0.533333
+illum 1
+
+newmtl mffe3ae
+Kd 1.000000 0.890196 0.682353
+illum 1
+
+newmtl mc7b188
+Kd 0.780392 0.694118 0.533333
+illum 1
+
+newmtl me6cc9d
+Kd 0.901961 0.800000 0.615686
+illum 1
+
+newmtl mb39f7a
+Kd 0.701961 0.623529 0.478431
+illum 1
+
+newmtl md9c194
+Kd 0.850980 0.756863 0.580392
+illum 1
+
+newmtl m37a698
+Kd 0.215686 0.650980 0.596078
+illum 1
+
+newmtl m2b8177
+Kd 0.168627 0.505882 0.466667
+illum 1
+
+newmtl m329589
+Kd 0.196078 0.584314 0.537255
+illum 1
+
+newmtl m27746a
+Kd 0.152941 0.454902 0.415686
+illum 1
+
+newmtl m2f8d81
+Kd 0.184314 0.552941 0.505882
+illum 1
+
+newmtl m73d6b4
+Kd 0.450980 0.839216 0.705882
+illum 1
+
+newmtl m5aa78c
+Kd 0.352941 0.654902 0.549020
+illum 1
+
+newmtl m68c1a2
+Kd 0.407843 0.756863 0.635294
+illum 1
+
+newmtl m51967e
+Kd 0.317647 0.588235 0.494118
+illum 1
+
+newmtl m62b699
+Kd 0.384314 0.713725 0.600000
+illum 1
+
+newmtl m314457
+Kd 0.192157 0.266667 0.341176
+illum 1
+
+newmtl m263544
+Kd 0.149020 0.207843 0.266667
+illum 1
+
+newmtl m2c3d4e
+Kd 0.172549 0.239216 0.305882
+illum 1
+
+newmtl m22303d
+Kd 0.133333 0.188235 0.239216
+illum 1
+
+newmtl m2a3a4a
+Kd 0.164706 0.227451 0.290196
+illum 1
+
+newmtl md77569
+Kd 0.843137 0.458824 0.411765
+illum 1
+
+newmtl ma85b52
+Kd 0.658824 0.356863 0.321569
+illum 1
+
+newmtl mc2695f
+Kd 0.760784 0.411765 0.372549
+illum 1
+
+newmtl m97524a
+Kd 0.592157 0.321569 0.290196
+illum 1
+
+newmtl mb76359
+Kd 0.717647 0.388235 0.349020
+illum 1
