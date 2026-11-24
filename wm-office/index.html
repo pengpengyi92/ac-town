@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1219">
+  <meta name="description" content="WM 桌面轮班：Pengyi 的 3D 财富管理工作模拟。">
+  <title>WM 桌面轮班｜Pengyi</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="data.js"></script>
+  <script defer src="office.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">WM</span><div><span class="overline">DESK SHIFT</span><h1>财富管理工作台</h1></div></div>
+    <div class="day"><strong id="headerProgress">0 / 3</strong><span>任务完成</span></div>
+    <button class="quiet header-help" id="helpOpen" type="button">操作说明</button>
+  </header>
+  <main class="game">
+    <section class="arena" id="arena" aria-label="可移动角色和三张工作桌">
+      <canvas id="world" aria-label="3D 模拟办公室" role="img"></canvas>
+      <div class="floor-head"><span class="overline">FLOOR 01 / WM OFFICE</span><h2>私行财富办公室</h2><p>操控 WM，完成你的三桌轮班。</p></div>
+      <div class="arena-tools"><button class="quiet" id="rotate" type="button">切换视角</button></div>
+      <div class="pins" id="pins">
+        <button class="pin" data-desk="0" type="button"><span class="pin-num">01</span><span><b>选品室</b><small>RESEARCH</small></span></button>
+        <button class="pin" data-desk="1" type="button"><span class="pin-num">02</span><span><b>上架运营台</b><small>OPERATIONS</small></span></button>
+        <button class="pin" data-desk="2" type="button"><span class="pin-num">03</span><span><b>存续监控台</b><small>MONITORING</small></span></button>
+        <span class="avatar-tag" id="avatarTag" aria-hidden="true">WM</span>
+      </div>
+      <div class="walkbar">
+        <p class="keys"><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <span>移动</span><kbd>E</kbd> <span>操作电脑</span></p>
+        <button class="quiet nearby" id="nearby" type="button" disabled>走近工作桌</button>
+        <p class="touch-note">轻触工作桌，WM 会走过去。</p>
+      </div>
+      <div class="fallback" id="fallback" hidden>当前设备不支持 WebGL。仍可通过工作桌列表完成整轮模拟。</div>
+    </section>
+    <aside class="panel" aria-label="当前班次任务">
+      <div class="panel-head"><span class="overline">TODAY’S SHIFT</span><h2>今日轮班</h2><p>两套独立案例，只使用合成数据。</p></div>
+      <div class="modes" aria-label="选择研究案例">
+        <button id="pubMode" type="button" aria-pressed="true">公募基金</button>
+        <button id="peMode" type="button" aria-pressed="false">私募股权</button>
+      </div>
+      <div class="case-signal" id="signal"></div>
+      <ol class="workflow" id="workflow">
+        <li><button data-go="0" type="button"><span class="step-no">01</span><span><b>选品</b><small>用途、证据、准入</small></span><strong class="step-status"></strong></button></li>
+        <li><button data-go="1" type="button"><span class="step-no">02</span><span><b>运行</b><small>版本、份额、渠道</small></span><strong class="step-status"></strong></button></li>
+        <li><button data-go="2" type="button"><span class="step-no">03</span><span><b>维持运行</b><small>监测、升报、服务</small></span><strong class="step-status"></strong></button></li>
+      </ol>
+      <p class="sr" id="live" aria-live="polite"></p>
+      <section class="notebook" id="notebook" aria-label="班次记录"></section>
+      <button class="primary" id="next" type="button">前往选品室</button>
+      <div class="panel-foot"><button class="quiet text-only" id="referencesOpen" type="button">桌面资料</button><button class="quiet text-only" id="restart" type="button">重开本班</button></div>
+    </aside>
+  </main>
+  <footer class="footer"><span>AUTHOR <b>Pengyi</b></span><span>P-3D × P-Game · 非官方教学模拟 · 不构成投资建议</span></footer>
+  <nav class="world-links" aria-label="切换场景">
+    <span>切换场景</span><a href="../pwmd-town/">← 财富管理小镇</a><a href="./" aria-current="page">私行财富办公室</a><a href="../wm-library/">公开资料站</a>
+  </nav>
+  <dialog id="mission" class="dialog" aria-labelledby="taskTitle">
+    <div class="dialog-top"><span class="overline" id="taskKicker"></span><button class="quiet close" id="taskClose" type="button">关闭</button></div>
+    <div class="dialog-body" id="taskBody"></div>
+  </dialog>
+  <dialog id="info" class="dialog" aria-labelledby="infoTitle">
+    <div class="dialog-top"><span class="overline">WM FIELD NOTES</span><button class="quiet close" id="infoClose" type="button">关闭</button></div>
+    <div class="dialog-body" id="infoBody"></div>
+  </dialog>
+  <noscript>打开 JavaScript 才能游玩。作者：Pengyi。</noscript>
+</body>
+</html>

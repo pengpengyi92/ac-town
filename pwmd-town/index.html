@@ -16,6 +16,7 @@
 dialog{max-width:min(580px,calc(100% - 24px));width:100%;background:#29243d;color:var(--ink);border:1px solid #7a6c88;border-radius:12px;padding:18px}dialog::backdrop{background:#10101bbd}.dialog-head{display:flex;align-items:center;justify-content:space-between}.dialog-head h2{font-size:1.22rem}dialog p{margin-top:12px;color:#eadde8}
 .inputs label{display:block;min-width:0;white-space:normal}.inputs select{display:block;margin-top:3px}
 @media(min-width:900px) and (min-height:725px){body{height:100svh}.world{min-height:0}}@media(max-width:899px){.layout{display:block}.world{height:54svh;min-height:420px;border-right:0;border-bottom:1px solid var(--line)}.inspector{overflow:visible;padding:14px 15px}.world-head{top:14px}.map-tools{top:12px;right:11px}.map-tools button{width:33px}.pin{font-size:.78rem}.walk{bottom:9px}}@media(max-width:480px){.top{min-height:65px;padding:8px 9px;gap:6px}.identity,.top-actions{gap:5px}.logo{width:35px;height:35px;font-size:.92rem}.top h1{font-size:1.05rem}.top .kicker{font-size:.52rem;letter-spacing:.065em}.notice{display:none}.top .button{font-size:.73rem;padding:4px 6px;min-height:31px}.top .full{width:31px;padding:0}.world{height:49svh;min-height:355px}.world-head p{font-size:.76rem}.pin{font-size:.71rem;padding:3px 4px}.pin b{display:none}.walk{font-size:.78rem}.foot .by{margin-left:0}.foot{font-size:.82rem}}
+body{grid-template-rows:auto minmax(0,1fr) auto auto}
 </style>
   
   
@@ -420,5 +421,8 @@ dialog{max-width:min(580px,calc(100% - 24px));width:100%;background:#29243d;colo
   new ResizeObserver(resize).observe(canvas);resize();renderDesk();updateFooter();coord();canvas.dataset.ready='true';
 })();
 </script>
+<nav aria-label="切换场景" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 14px;padding:14px 14px 22px;border-top:1px solid #2e4b59;background:#12232d;color:#dce9eb;font:600 .9rem system-ui">
+  <span>切换场景</span><a href="./" aria-current="page" style="color:#dce9eb;padding:12px 8px">财富管理小镇</a><a href="../wm-office/" style="color:#9cf5d8;padding:12px;border:1px solid #538579;border-radius:8px">进入私行财富办公室 →</a><a href="../wm-library/" style="color:#9cf5d8;padding:12px 8px">公开资料站</a>
+</nav>
 </body>
 </html>
